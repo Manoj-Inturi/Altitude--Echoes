@@ -1,0 +1,1174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Mountaineers: Masters of the Peaks — Altitude Echoes</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg: #fbf8f4;
+  --card: #ffffff;
+  --text: #1f2933;
+  --muted: #55606a;
+  --blue: #007bff;
+  --max-width: 1200px;
+  --gap: 22px;
+}
+
+/* base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:"Open Sans",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+}
+
+/* NAV (kept exact behavior) */
+.nav{
+  width:100%;position:fixed;top:0;left:0;z-index:1200;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 70px;background:rgba(0,0,0,0.45);backdrop-filter:blur(8px);
+  transition:0.35s;
+}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{width:60px;height:60px;object-fit:contain}
+.logo-text{display:flex;flex-direction:column;line-height:1}
+.logo-text h2{margin:0;color:white;text-transform:uppercase;font-family:"Montserrat",sans-serif;font-size:20px}
+.logo-text h2:last-child{font-weight:700}
+.subnav{display:flex;gap:28px}
+.subnav a{color:white;font-weight:600;font-size:15px;position:relative;padding:6px 4px}
+.subnav a::after{content:"";position:absolute;bottom:-6px;left:0;width:0;height:2px;background:var(--blue);transition:0.28s}
+.subnav a:hover{color:var(--blue)}
+.subnav a:hover::after{width:100%}
+.nav.scrolled{background:white;box-shadow:0 4px 22px rgba(12,18,24,0.08);padding:12px 60px}
+.nav.scrolled .logo-text h2:first-child{color:#222}
+.nav.scrolled .logo-text h2:last-child{color:var(--blue)}
+.nav.scrolled .subnav a{color:#333}
+
+/* Page wrapper (boxed) */
+.wrapper{
+  max-width:var(--max-width);
+  margin:120px auto 80px;
+  padding:0 20px;
+}
+
+/* Hero */
+.hero{
+  width:100%;
+  border-radius:12px;
+  overflow:hidden;
+  margin-bottom:26px;
+  position:relative;
+  box-shadow:0 14px 36px rgba(16,24,32,0.06);
+}
+.hero img{width:100%;height:320px;object-fit:cover;display:block}
+.hero .hero-content{
+  position:absolute;left:28px;bottom:18px;color:white;font-family:"Playfair Display",serif;
+  text-shadow:0 6px 22px rgba(0,0,0,0.45);
+}
+.hero h1{font-size:32px;margin:0}
+.hero p{margin-top:6px;font-size:15px;color:rgba(255,255,255,0.95)}
+
+/* Title */
+.title-block{
+  margin:20px 0 12px;
+  display:flex;align-items:center;gap:18px;
+}
+.title-block h2{font-family:"Playfair Display",serif;font-size:28px;margin:0}
+.title-rule{height:6px;width:84px;background:var(--blue);border-radius:3px}
+
+/* Grid */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:var(--gap);
+  align-items:start;
+}
+
+/* Card */
+.card{
+  display:block;background:var(--card);border-radius:12px;overflow:hidden;
+  text-decoration:none;color:inherit;border:1px solid rgba(15,23,42,0.04);
+  box-shadow:0 10px 28px rgba(16,24,40,0.06);
+  transform:translateY(16px);opacity:0;animation:cardFade .6s ease forwards;
+  transition:transform .22s ease,box-shadow .22s ease;
+  cursor:pointer;
+}
+.card:hover{transform:translateY(-10px);box-shadow:0 28px 72px rgba(16,24,40,0.10)}
+.card:focus{outline:3px solid rgba(0,123,255,0.12);outline-offset:4px}
+.card .img{width:100%;height:200px;display:block;object-fit:cover;transition:transform .35s ease,filter .35s ease}
+.card:hover .img{transform:scale(1.06);filter:brightness(1.02)}
+.card .meta{padding:12px 14px 18px}
+.card .title{font-family:"Montserrat",sans-serif;font-weight:700;font-size:15.5px;margin-bottom:6px}
+.card .sub{font-size:13px;color:var(--muted);margin-bottom:6px}
+.card .meta-p{font-size:13px;color:#374151}
+
+/* staggered animations up to 66 */
+@keyframes cardFade{to{opacity:1;transform:translateY(0)}}
+.grid .card:nth-child(1){animation-delay:.04s}
+.grid .card:nth-child(2){animation-delay:.07s}
+.grid .card:nth-child(3){animation-delay:.10s}
+.grid .card:nth-child(4){animation-delay:.13s}
+.grid .card:nth-child(5){animation-delay:.16s}
+.grid .card:nth-child(6){animation-delay:.19s}
+.grid .card:nth-child(7){animation-delay:.22s}
+.grid .card:nth-child(8){animation-delay:.25s}
+.grid .card:nth-child(9){animation-delay:.28s}
+.grid .card:nth-child(10){animation-delay:.31s}
+.grid .card:nth-child(11){animation-delay:.34s}
+.grid .card:nth-child(12){animation-delay:.37s}
+.grid .card:nth-child(13){animation-delay:.40s}
+.grid .card:nth-child(14){animation-delay:.43s}
+.grid .card:nth-child(15){animation-delay:.46s}
+.grid .card:nth-child(16){animation-delay:.49s}
+.grid .card:nth-child(17){animation-delay:.52s}
+.grid .card:nth-child(18){animation-delay:.55s}
+.grid .card:nth-child(19){animation-delay:.58s}
+.grid .card:nth-child(20){animation-delay:.61s}
+.grid .card:nth-child(21){animation-delay:.64s}
+.grid .card:nth-child(22){animation-delay:.67s}
+.grid .card:nth-child(23){animation-delay:.70s}
+.grid .card:nth-child(24){animation-delay:.73s}
+.grid .card:nth-child(25){animation-delay:.76s}
+.grid .card:nth-child(26){animation-delay:.79s}
+.grid .card:nth-child(27){animation-delay:.82s}
+.grid .card:nth-child(28){animation-delay:.85s}
+.grid .card:nth-child(29){animation-delay:.88s}
+.grid .card:nth-child(30){animation-delay:.91s}
+.grid .card:nth-child(31){animation-delay:.94s}
+.grid .card:nth-child(32){animation-delay:.97s}
+.grid .card:nth-child(33){animation-delay:1.00s}
+.grid .card:nth-child(34){animation-delay:1.03s}
+.grid .card:nth-child(35){animation-delay:1.06s}
+.grid .card:nth-child(36){animation-delay:1.09s}
+.grid .card:nth-child(37){animation-delay:1.12s}
+.grid .card:nth-child(38){animation-delay:1.15s}
+.grid .card:nth-child(39){animation-delay:1.18s}
+.grid .card:nth-child(40){animation-delay:1.21s}
+.grid .card:nth-child(41){animation-delay:1.24s}
+.grid .card:nth-child(42){animation-delay:1.27s}
+.grid .card:nth-child(43){animation-delay:1.30s}
+.grid .card:nth-child(44){animation-delay:1.33s}
+.grid .card:nth-child(45){animation-delay:1.36s}
+.grid .card:nth-child(46){animation-delay:1.39s}
+.grid .card:nth-child(47){animation-delay:1.42s}
+.grid .card:nth-child(48){animation-delay:1.45s}
+.grid .card:nth-child(49){animation-delay:1.48s}
+.grid .card:nth-child(50){animation-delay:1.51s}
+.grid .card:nth-child(51){animation-delay:1.54s}
+.grid .card:nth-child(52){animation-delay:1.57s}
+.grid .card:nth-child(53){animation-delay:1.60s}
+.grid .card:nth-child(54){animation-delay:1.63s}
+.grid .card:nth-child(55){animation-delay:1.66s}
+.grid .card:nth-child(56){animation-delay:1.69s}
+.grid .card:nth-child(57){animation-delay:1.72s}
+.grid .card:nth-child(58){animation-delay:1.75s}
+.grid .card:nth-child(59){animation-delay:1.78s}
+.grid .card:nth-child(60){animation-delay:1.81s}
+.grid .card:nth-child(61){animation-delay:1.84s}
+.grid .card:nth-child(62){animation-delay:1.87s}
+.grid .card:nth-child(63){animation-delay:1.90s}
+.grid .card:nth-child(64){animation-delay:1.93s}
+.grid .card:nth-child(65){animation-delay:1.96s}
+.grid .card:nth-child(66){animation-delay:1.99s}
+
+/* responsive */
+@media (max-width:1000px){
+  .wrapper{margin-top:100px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:18px}
+  .card .img{height:190px}
+}
+@media (max-width:640px){
+  .grid{grid-template-columns:1fr;gap:14px}
+  .logo img{width:52px;height:52px}
+  .nav{padding:14px 18px}
+  .wrapper{margin-top:92px;padding:0 14px}
+}
+
+/* footer */
+.footer{margin-top:44px;padding:24px;text-align:center;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="nav">
+  <a class="logo" href="index.html">
+    <img id="logo-img" src="images/logobefore-removebg-preview.png" alt="Altitude Echoes Logo" />
+    <div class="logo-text">
+      <h2>Altitude</h2>
+      <h2 id="echo-text">Echoes</h2>
+    </div>
+  </a>
+
+  <div class="subnav">
+    <a href="index.html">Home</a>
+    <a href="8000.html">8000ers</a>
+    <a href="mountaneers.html">Mountaineers</a>
+    <a href="documentaries.html">Documentaries</a>
+    <a href="altitude.html">Altitude Sickness</a>
+    <a href="courses.html">Courses</a>
+  </div>
+</div>
+
+<!-- WRAPPER -->
+<main class="wrapper">
+
+  <!-- HERO: uses your uploaded image path -->
+  <div class="hero" aria-hidden="false">
+    <img src="/mnt/data/de601416-5d3d-4418-afe6-5ab43af0c963.png" alt="Mountain hero image">
+    <div class="hero-content">
+      <h1>Mountaineers: Masters of the Peaks</h1>
+      <p>Indian climbers & Sherpas prioritized — legends from around the world follow.</p>
+    </div>
+  </div>
+
+  <div class="title-block">
+    <h2>Mountaineers: Masters of the Peaks</h2>
+    <div class="title-rule" aria-hidden="true"></div>
+  </div>
+
+  <div class="grid">
+
+
+    <!-- 1 -->
+<a class="card" href="https://en.wikipedia.org/wiki/H._P._S._Ahluwalia" target="_blank">
+  <img class="img" src="images/climber_01.jpg" alt="H.P.S. Ahluwalia">
+  <div class="meta">
+    <div class="title">Major H.P.S. Ahluwalia</div>
+    <div class="sub">🇮🇳 Indian</div>
+
+    <div class="meta-p">1965 Everest summiteer & Padma Bhushan recipient.</div>
+  </div>
+</a>
+
+<!-- 2 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Mohinder_Singh_Kohli" target="_blank">
+  <img class="img" src="images/climber_02.jpg" alt="Captain M.S. Kohli">
+  <div class="meta">
+    <div class="title">Captain M.S. Kohli</div>
+    <div class="sub">🇮🇳 Indian</div>
+    <div class="meta-p">Leader of the historic 1965 Indian Everest Expedition.</div>
+  </div>
+</a>
+
+<!-- 3 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Bachendri_Pal" target="_blank">
+  <img class="img" src="images/climber_03.jpg" alt="Bachendri Pal">
+  <div class="meta">
+    <div class="title">Bachendri Pal</div>
+    <div class="sub">🇮🇳 Indian</div>
+    <div class="meta-p">First Indian woman to climb Everest (1984).</div>
+  </div>
+</a>
+
+<!-- 4 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Arunima_Sinha" target="_blank">
+  <img class="img" src="images/climber_04.jpg" alt="Arunima Sinha">
+  <div class="meta">
+    <div class="title">Arunima Sinha</div>
+    <div class="sub">🇮🇳 Indian</div>
+    <div class="meta-p">First female amputee to summit Everest.</div>
+  </div>
+</a>
+
+<!-- 5 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Malavath_Poorna" target="_blank">
+  <img class="img" src="images/climber_05.jpg" alt="Malavath Poorna">
+  <div class="meta">
+    <div class="title">Malavath Poorna</div>
+    <div class="sub">🇮🇳 Indian</div>
+    <div class="meta-p">Youngest girl to summit Everest at age 13.</div>
+  </div>
+</a>
+
+<!-- 6 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Santosh_Yadav" target="_blank">
+  <img class="img" src="images/climber_06.jpg" alt="Santosh Yadav">
+  <div class="meta">
+    <div class="title">Santosh Yadav</div>
+    <div class="sub">🇮🇳 Indian</div>
+    <div class="meta-p">First woman to summit Everest twice.</div>
+  </div>
+</a>
+
+<!-- 7 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Premlata_Agarwal" target="_blank">
+  <img class="img" src="images/climber_07.jpg" alt="Premlata Agarwal">
+  <div class="meta">
+    <div class="title">Premlata Agarwal</div>
+    <div class="sub">🇮🇳 Indian</div>
+    <div class="meta-p">Oldest Indian woman to climb Everest.</div>
+  </div>
+</a>
+
+<!-- 8 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Tashi_and_Nungshi_Malik" target="_blank">
+  <img class="img" src="images/climber_08.jpg" alt="Tashi Malik">
+  <div class="meta">
+    <div class="title">Tashi Malik</div>
+    <div class="sub">🇮🇳 Indian</div>
+    <div class="meta-p">Everest twin; completed Explorer’s Grand Slam.</div>
+  </div>
+</a>
+
+<!-- 9 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Tashi_and_Nungshi_Malik" target="_blank">
+  <img class="img" src="images/climber_09.jpg" alt="Nungshi Malik">
+  <div class="meta">
+    <div class="title">Nungshi Malik</div>
+    <div class="sub">🇮🇳 Indian</div>
+    <div class="meta-p">Everest twin; mountaineering & women empowerment icon.</div>
+  </div>
+</a>
+
+<!-- 10 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Satyarup_Siddhanta" target="_blank">
+  <img class="img" src="images/climber_10.jpg" alt="Satyarup Siddhanta">
+  <div class="meta">
+    <div class="title">Satyarup Siddhanta</div>
+    <div class="sub">🇮🇳 Indian</div>
+    <div class="meta-p">Youngest to complete 7 Summits + 7 Volcanic Summits.</div>
+  </div>
+</a>
+
+<!-- 11 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Arjun_Vajpai" target="_blank">
+  <img class="img" src="images/climber_11.jpg" alt="Arjun Vajpai">
+  <div class="meta">
+    <div class="title">Arjun Vajpai</div>
+    <div class="sub">🇮🇳 Indian</div>
+    <div class="meta-p">One of the youngest Everest summiteers.</div>
+  </div>
+</a>
+
+<!-- 12 — Your uploaded image -->
+<a class="card" href="https://en.wikipedia.org/wiki/Bharath_Thammineni" target="_blank">
+  <img class="img" src="/mnt/data/de601416-5d3d-4418-afe6-5ab43af0c963.png" alt="Bharath Thammineni">
+  <div class="meta">
+    <div class="title">Bharth Thammineni</div>
+    <div class="sub">🇮🇳 Indian</div>
+    <div class="meta-p">One of India’s strongest 8000m climbers.</div>
+  </div>
+</a>
+
+<!-- 13 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Baljeet_Kaur" target="_blank">
+  <img class="img" src="images/climber_13.jpg" alt="Baljeet Kaur">
+  <div class="meta">
+    <div class="title">Baljeet Kaur</div>
+    <div class="sub">🇮🇳 Indian</div>
+    <div class="meta-p">First Indian woman to summit 7 Himalayan 8000ers.</div>
+  </div>
+</a>
+
+<!-- 14 -->
+<a class="card" href="#" target="_blank">
+  <img class="img" src="images/climber_14.jpg" alt="Keval Kakka">
+  <div class="meta">
+    <div class="title">Keval Kakka</div>
+    <div class="sub">🇮🇳 Indian</div>
+    <div class="meta-p">Seven Summits climber; adventure speaker.</div>
+  </div>
+</a>
+
+<!-- 15 -->
+<a class="card" href="#" target="_blank">
+  <img class="img" src="images/climber_15.jpg" alt="Viswanath Karthikeya Padakanti">
+  <div class="meta">
+    <div class="title">Viswanath Karthikeya Padakanti</div>
+    <div class="sub">🇮🇳 Indian</div>
+    <div class="meta-p">Youngest Indian to complete the Seven Summits.</div>
+  </div>
+</a>
+
+<!-- 16 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Ranveer_Singh_Jamwal" target="_blank">
+  <img class="img" src="images/climber_16.jpg" alt="Colonel Ranveer Jamwal">
+  <div class="meta">
+    <div class="title">Colonel Ranveer Jamwal</div>
+    <div class="sub">🇮🇳 Indian Army</div>
+    <div class="meta-p">Led 50+ Himalayan expeditions.</div>
+  </div>
+</a>
+
+<!-- 17 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Love_Raj_Singh_Dharmshaktu" target="_blank">
+  <img class="img" src="images/climber_17.jpg" alt="Love Raj Singh Dharmshaktu">
+  <div class="meta">
+    <div class="title">Love Raj Singh Dharmshaktu</div>
+    <div class="sub">🇮🇳 Indian</div>
+    <div class="meta-p">Record Everest summits by an Indian.</div>
+  </div>
+</a>
+
+<!-- 18 -->
+<a class="card" href="#" target="_blank">
+  <img class="img" src="images/climber_18.jpg" alt="Debabrata Mukherjee">
+  <div class="meta">
+    <div class="title">Debabrata Mukherjee</div>
+    <div class="sub">🇮🇳 Indian</div>
+    <div class="meta-p">Everest & Lhotse summiter.</div>
+  </div>
+</a>
+
+<!-- 19 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Nawang_Gombu" target="_blank">
+  <img class="img" src="images/climber_19.jpg" alt="Nawang Gombu">
+  <div class="meta">
+    <div class="title">Nawang Gombu</div>
+    <div class="sub">🇮🇳 Indian Sherpa</div>
+    <div class="meta-p">First man to summit Everest twice.</div>
+  </div>
+</a>
+
+<!-- 20 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Lhakpa_Sherpa" target="_blank">
+  <img class="img" src="images/climber_20.jpg" alt="Lhakpa Sherpa">
+  <div class="meta">
+    <div class="title">Lhakpa Sherpa</div>
+    <div class="sub">🇳🇵 Nepali Sherpa</div>
+    <div class="meta-p">Record Everest summits by a woman.</div>
+  </div>
+</a>
+
+<!-- 21 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Pasang_Lhamu_Sherpa" target="_blank">
+  <img class="img" src="images/climber_21.jpg" alt="Pasang Lhamu Sherpa">
+  <div class="meta">
+    <div class="title">Pasang Lhamu Sherpa</div>
+    <div class="sub">🇳🇵 Nepali Sherpa</div>
+    <div class="meta-p">First Nepali woman to climb Everest.</div>
+  </div>
+</a>
+
+<!-- 22 -->
+<a class="card" href="#" target="_blank">
+  <img class="img" src="images/climber_22.jpg" alt="Lakpa Sherpa">
+  <div class="meta">
+    <div class="title">Lakpa Sherpa</div>
+    <div class="sub">🇳🇵 Nepali Sherpa</div>
+    <div class="meta-p">Renowned Himalayan guide.</div>
+  </div>
+</a>
+
+<!-- 23 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Ang_Tshering_Sherpa" target="_blank">
+  <img class="img" src="images/climber_23.jpg" alt="Ang Tshering Sherpa">
+  <div class="meta">
+    <div class="title">Ang Tshering Sherpa</div>
+    <div class="sub">🇳🇵 Nepali Sherpa</div>
+    <div class="meta-p">Founder of Asian Trekking; Everest veteran.</div>
+  </div>
+</a>
+
+<!-- 24 -->
+<a class="card" href="#" target="_blank">
+  <img class="img" src="images/climber_24.jpg" alt="Ang Kami Sherpa">
+  <div class="meta">
+    <div class="title">Ang Kami Sherpa</div>
+    <div class="sub">🇳🇵 Nepali Sherpa</div>
+    <div class="meta-p">High-altitude rescue specialist.</div>
+  </div>
+</a>
+
+<!-- 25 -->
+<a class="card" href="#" target="_blank">
+  <img class="img" src="images/climber_25.jpg" alt="Ang Dorjee Sherpa">
+  <div class="meta">
+    <div class="title">Ang Dorjee Sherpa</div>
+    <div class="sub">🇳🇵 Nepali Sherpa</div>
+    <div class="meta-p">Respected Everest climbing leader.</div>
+  </div>
+</a>
+
+<!-- 26 -->
+<a class="card" href="#" target="_blank">
+  <img class="img" src="images/climber_26.jpg" alt="Pasang Norbu Sherpa">
+  <div class="meta">
+    <div class="title">Pasang Norbu Sherpa</div>
+    <div class="sub">🇳🇵 Nepali Sherpa</div>
+    <div class="meta-p">Multiple 8000er ascents.</div>
+  </div>
+</a>
+
+<!-- 27 -->
+<a class="card" href="#" target="_blank">
+  <img class="img" src="images/climber_27.jpg" alt="Tashi Lakpa Sherpa">
+  <div class="meta">
+    <div class="title">Tashi Lakpa Sherpa</div>
+    <div class="sub">🇳🇵 Nepali Sherpa</div>
+    <div class="meta-p">Seven Summits finisher.</div>
+  </div>
+</a>
+
+<!-- 28 -->
+<a class="card" href="#" target="_blank">
+  <img class="img" src="images/climber_28.jpg" alt="Mingma Tenzi Sherpa">
+  <div class="meta">
+    <div class="title">Mingma Tenzi Sherpa</div>
+    <div class="sub">🇳🇵 Nepali Sherpa</div>
+    <div class="meta-p">K2 Winter 2021 ascent team.</div>
+  </div>
+</a>
+
+<!-- 29 -->
+<a class="card" href="#" target="_blank">
+  <img class="img" src="images/climber_29.jpg" alt="Tenjen Lama Sherpa">
+  <div class="meta">
+    <div class="title">Tenjen Lama Sherpa</div>
+    <div class="sub">🇳🇵 Nepali Sherpa</div>
+    <div class="meta-p">Record 14×8000ers speed ascent.</div>
+  </div>
+</a>
+
+<!-- 30 -->
+<a class="card" href="#" target="_blank">
+  <img class="img" src="images/climber_30.jpg" alt="Da Gelje Sherpa">
+  <div class="meta">
+    <div class="title">Da Gelje Sherpa</div>
+    <div class="sub">🇳🇵 Nepali Sherpa</div>
+    <div class="meta-p">Known for elite rescues & 8000m climbs.</div>
+  </div>
+</a>
+
+<!-- 31 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Hans_Kammerlander" target="_blank">
+  <img class="img" src="images/climber_31.jpg" alt="Hans Kammerlander">
+  <div class="meta">
+    <div class="title">Hans Kammerlander</div>
+    <div class="sub">Italian</div>
+    <div class="meta-p">Known for fast ascents; summited 13×8000ers.</div>
+  </div>
+</a>
+
+<!-- 32 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Artur_Hajzer" target="_blank">
+  <img class="img" src="images/climber_32.jpg" alt="Artur Hajzer">
+  <div class="meta">
+    <div class="title">Artur Hajzer</div>
+    <div class="sub">Polish</div>
+    <div class="meta-p">Co-creator of Polish Winter Himalaism program.</div>
+  </div>
+</a>
+
+<!-- 33 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Tomasz_Mackiewicz" target="_blank">
+  <img class="img" src="images/climber_33.jpg" alt="Tomasz Mackiewicz">
+  <div class="meta">
+    <div class="title">Tomasz Mackiewicz</div>
+    <div class="sub">Polish</div>
+    <div class="meta-p">Known for Nanga Parbat winter attempts.</div>
+  </div>
+</a>
+
+<!-- 34 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Simone_Lacal" target="_blank">
+  <img class="img" src="images/climber_34.jpg" alt="Simone La Terra">
+  <div class="meta">
+    <div class="title">Simone La Terra</div>
+    <div class="sub">Italian</div>
+    <div class="meta-p">Strong Himalayan climber known for multiple expeditions.</div>
+  </div>
+</a>
+
+<!-- 35 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Krzysztof_Wielicki" target="_blank">
+  <img class="img" src="images/climber_35.jpg" alt="Krzysztof Wielicki">
+  <div class="meta">
+    <div class="title">Krzysztof Wielicki</div>
+    <div class="sub">Polish</div>
+    <div class="meta-p">First winter ascents of Everest, Kangchenjunga, Lhotse.</div>
+  </div>
+</a>
+
+<!-- 36 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Wojciech_Kurz" target="_blank">
+  <img class="img" src="images/climber_36.jpg" alt="Wojciech Kurtyka">
+  <div class="meta">
+    <div class="title">Wojciech Kurtyka</div>
+    <div class="sub">Polish</div>
+    <div class="meta-p">Alpine-style pioneer; legendary “Shining Wall” ascent.</div>
+  </div>
+</a>
+
+<!-- 37 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Jean-Christophe_Lafaille" target="_blank">
+  <img class="img" src="images/climber_37.jpg" alt="Jean-Christophe Lafaille">
+  <div class="meta">
+    <div class="title">Jean-Christophe Lafaille</div>
+    <div class="sub">French</div>
+    <div class="meta-p">Committed soloist; notable Himalayan climbs.</div>
+  </div>
+</a>
+
+<!-- 38 -->
+<a class="card" href="https://en.wikipedia.org/wiki/David_Lama" target="_blank">
+  <img class="img" src="images/climber_38.jpg" alt="David Lama">
+  <div class="meta">
+    <div class="title">David Lama</div>
+    <div class="sub">Austrian</div>
+    <div class="meta-p">First ascent of Lunag Ri; elite alpinist.</div>
+  </div>
+</a>
+
+<!-- 39 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Alex_Lowe" target="_blank">
+  <img class="img" src="images/climber_39.jpg" alt="Alex Lowe">
+  <div class="meta">
+    <div class="title">Alex Lowe</div>
+    <div class="sub">American</div>
+    <div class="meta-p">Considered one of the strongest climbers ever.</div>
+  </div>
+</a>
+
+<!-- 40 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Jerzy_Kukuczka" target="_blank">
+  <img class="img" src="images/climber_40.jpg" alt="Jerzy Kukuczka">
+  <div class="meta">
+    <div class="title">Jerzy Kukuczka</div>
+    <div class="sub">Polish</div>
+    <div class="meta-p">Second person to climb all 14×8000ers.</div>
+  </div>
+</a>
+
+<!-- 41 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Alan_Hinkes" target="_blank">
+  <img class="img" src="images/climber_41.jpg" alt="Alan Hinkes">
+  <div class="meta">
+    <div class="title">Alan Hinkes</div>
+    <div class="sub">British</div>
+    <div class="meta-p">Only Brit to climb all 14×8000m peaks.</div>
+  </div>
+</a>
+
+<!-- 42 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Ed_Viesturs" target="_blank">
+  <img class="img" src="images/climber_42.jpg" alt="Ed Viesturs">
+  <div class="meta">
+    <div class="title">Ed Viesturs</div>
+    <div class="sub">American</div>
+    <div class="meta-p">14×8000ers without O2; elite guide.</div>
+  </div>
+</a>
+
+<!-- 43 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Scott_Fischer" target="_blank">
+  <img class="img" src="images/climber_43.jpg" alt="Scott Fischer">
+  <div class="meta">
+    <div class="title">Scott Fischer</div>
+    <div class="sub">American</div>
+    <div class="meta-p">Founder of Mountain Madness; Everest 1996 figure.</div>
+  </div>
+</a>
+
+<!-- 44 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Rob_Hall" target="_blank">
+  <img class="img" src="images/climber_44.jpg" alt="Rob Hall">
+  <div class="meta">
+    <div class="title">Rob Hall</div>
+    <div class="sub">New Zealander</div>
+    <div class="meta-p">Famous for his 1996 Everest leadership.</div>
+  </div>
+</a>
+
+<!-- 45 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Marty_Schmid" target="_blank">
+  <img class="img" src="images/climber_45.jpg" alt="Marty Schmidt">
+  <div class="meta">
+    <div class="title">Marty Schmidt</div>
+    <div class="sub">American–New Zealander</div>
+    <div class="meta-p">Veteran Himalayan guide; K2 climber.</div>
+  </div>
+</a>
+
+<!-- 46 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Anita_Sharma" target="_blank">
+  <img class="img" src="images/climber_46.jpg" alt="Anita Sharma">
+  <div class="meta">
+    <div class="title">Anita Sharma</div>
+    <div class="sub">Indian</div>
+    <div class="meta-p">Noted Indian expedition climber.</div>
+  </div>
+</a>
+
+<!-- 47 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Cathy_O%27Dowd" target="_blank">
+  <img class="img" src="images/climber_47.jpg" alt="Cathy O'Dowd">
+  <div class="meta">
+    <div class="title">Cathy O'Dowd</div>
+    <div class="sub">South African</div>
+    <div class="meta-p">First woman to summit Everest from both sides.</div>
+  </div>
+</a>
+
+<!-- 48 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Steph_Davis" target="_blank">
+  <img class="img" src="images/climber_48.jpg" alt="Steph Davis">
+  <div class="meta">
+    <div class="title">Steph Davis</div>
+    <div class="sub">American</div>
+    <div class="meta-p">Alpinist, free-soloist, wingsuit flyer.</div>
+  </div>
+</a>
+
+<!-- 49 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Will_Gadd" target="_blank">
+  <img class="img" src="images/climber_49.jpg" alt="Will Gadd">
+  <div class="meta">
+    <div class="title">Will Gadd</div>
+    <div class="sub">Canadian</div>
+    <div class="meta-p">Ice-climbing world champion; Niagara Falls ascent.</div>
+  </div>
+</a>
+
+<!-- 50 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Steve_House" target="_blank">
+  <img class="img" src="images/climber_50.jpg" alt="Steve House">
+  <div class="meta">
+    <div class="title">Steve House</div>
+    <div class="sub">American</div>
+    <div class="meta-p">Fast-and-light pioneer; Nanga Parbat Rupal Face.</div>
+  </div>
+</a>
+
+<!-- 51 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Mick_Fowler" target="_blank">
+  <img class="img" src="images/climber_51.jpg" alt="Mick Fowler">
+  <div class="meta">
+    <div class="title">Mick Fowler</div>
+    <div class="sub">British</div>
+    <div class="meta-p">Known for bold alpine expeditions.</div>
+  </div>
+</a>
+
+<!-- 52 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Yasushi_Yamada" target="_blank">
+  <img class="img" src="images/climber_52.jpg" alt="Yasushi Yamada">
+  <div class="meta">
+    <div class="title">Yasushi Yamada</div>
+    <div class="sub">Japanese</div>
+    <div class="meta-p">Noted for Himalayan mountaineering attempts.</div>
+  </div>
+</a>
+
+<!-- 53 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Kazuki_Saito" target="_blank">
+  <img class="img" src="images/climber_53.jpg" alt="Kazuki Saito">
+  <div class="meta">
+    <div class="title">Kazuki Saito</div>
+    <div class="sub">Japanese</div>
+    <div class="meta-p">Climber known for technical ascents.</div>
+  </div>
+</a>
+
+<!-- 54 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Juanito_Oiarzabal" target="_blank">
+  <img class="img" src="images/climber_54.jpg" alt="Juanito Oiarzabal">
+  <div class="meta">
+    <div class="title">Juanito Oiarzabal</div>
+    <div class="sub">Spanish</div>
+    <div class="meta-p">Summited 26×8000m peaks (multiple repeats).</div>
+  </div>
+</a>
+
+<!-- 55 -->
+<a class="card" href="https://en.wikipedia.org/wiki/I%C3%B1aki_Ochoa" target="_blank">
+  <img class="img" src="images/climber_55.jpg" alt="Iñaki Ochoa de Olza">
+  <div class="meta">
+    <div class="title">Iñaki Ochoa de Olza</div>
+    <div class="sub">Spanish</div>
+    <div class="meta-p">Known for his humanitarian climbing legacy.</div>
+  </div>
+</a>
+
+<!-- 56 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Juan_Mart%C3%ADnez" target="_blank">
+  <img class="img" src="images/climber_56.jpg" alt="Juan Martínez">
+  <div class="meta">
+    <div class="title">Juan Martínez</div>
+    <div class="sub">Chilean</div>
+    <div class="meta-p">Andean + Himalayan climber with strong ascents.</div>
+  </div>
+</a>
+
+<!-- 57 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Carlos_Carlos" target="_blank">
+  <img class="img" src="images/climber_57.jpg" alt="Carlos Carsolio">
+  <div class="meta">
+    <div class="title">Carlos Carsolio</div>
+    <div class="sub">Mexican</div>
+    <div class="meta-p">Youngest to climb all 14×8000ers (at the time).</div>
+  </div>
+</a>
+
+<!-- 58 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Julie_Tully" target="_blank">
+  <img class="img" src="images/climber_58.jpg" alt="Julie Tullis">
+  <div class="meta">
+    <div class="title">Julie Tullis</div>
+    <div class="sub">British</div>
+    <div class="meta-p">Pioneering female high-altitude climber.</div>
+  </div>
+</a>
+
+<!-- 59 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Alan_Ruck" target="_blank">
+  <img class="img" src="images/climber_59.jpg" alt="Alan Rouse">
+  <div class="meta">
+    <div class="title">Alan Rouse</div>
+    <div class="sub">British</div>
+    <div class="meta-p">K2 1986 team member; strong alpinist.</div>
+  </div>
+</a>
+
+<!-- 60 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Peter_Boardman" target="_blank">
+  <img class="img" src="images/climber_60.jpg" alt="Peter Boardman">
+  <div class="meta">
+    <div class="title">Peter Boardman</div>
+    <div class="sub">British</div>
+    <div class="meta-p">Noted for the Boardman-Tasker climbs.</div>
+  </div>
+</a>
+
+<!-- 61 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Joe_Tasker" target="_blank">
+  <img class="img" src="images/climber_61.jpg" alt="Joe Tasker">
+  <div class="meta">
+    <div class="title">Joe Tasker</div>
+    <div class="sub">British</div>
+    <div class="meta-p">Iconic alpinist; part of the Everest NE ridge attempt.</div>
+  </div>
+</a>
+
+<!-- 62 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Tomaz_Humar" target="_blank">
+  <img class="img" src="images/climber_62.jpg" alt="Tomaz Humar">
+  <div class="meta">
+    <div class="title">Tomaz Humar</div>
+    <div class="sub">Slovenian</div>
+    <div class="meta-p">Known for extreme solo routes in Himalayas.</div>
+  </div>
+</a>
+
+<!-- 63 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Rinhold_Messner" target="_blank">
+  <img class="img" src="images/climber_63.jpg" alt="Hansjörg Auer">
+  <div class="meta">
+    <div class="title">Hansjörg Auer</div>
+    <div class="sub">Austrian</div>
+    <div class="meta-p">Free solo of “Via del Pesce”; elite alpinist.</div>
+  </div>
+</a>
+
+<!-- 64 -->
+<a class="card" href="https://en.wikipedia.org/wiki/David_Sharp_(mountaineer)" target="_blank">
+  <img class="img" src="images/climber_64.jpg" alt="David Sharp">
+  <div class="meta">
+    <div class="title">David Sharp</div>
+    <div class="sub">British</div>
+    <div class="meta-p">Known for his Everest solo attempt.</div>
+  </div>
+</a>
+
+<!-- 65 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Erhard_Loretan" target="_blank">
+  <img class="img" src="images/climber_65.jpg" alt="Erhard Loretan">
+  <div class="meta">
+    <div class="title">Erhard Loretan</div>
+    <div class="sub">Swiss</div>
+    <div class="meta-p">Third person to climb all 14×8000ers.</div>
+  </div>
+</a>
+
+<!-- 66 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Thomas_H%C3%BCber" target="_blank">
+  <img class="img" src="images/climber_66.jpg" alt="Thomas Huber">
+  <div class="meta">
+    <div class="title">Thomas Huber</div>
+    <div class="sub">German</div>
+    <div class="meta-p">One half of the famous Huber brothers.</div>
+  </div>
+</a>
+
+<!-- 67 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Alexander_Huber" target="_blank">
+  <img class="img" src="images/climber_67.jpg" alt="Alexander Huber">
+  <div class="meta">
+    <div class="title">Alexander Huber</div>
+    <div class="sub">German</div>
+    <div class="meta-p">Known for extreme alpine and big-wall climbs.</div>
+  </div>
+</a>
+
+<!-- 68 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Arved_Fuchs" target="_blank">
+  <img class="img" src="images/climber_68.jpg" alt="Arved Fuchs">
+  <div class="meta">
+    <div class="title">Arved Fuchs</div>
+    <div class="sub">German</div>
+    <div class="meta-p">Arctic explorer & expedition mountaineer.</div>
+  </div>
+</a>
+
+<!-- 69 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Roland_Paulsen" target="_blank">
+  <img class="img" src="images/climber_69.jpg" alt="Roland Paulsen">
+  <div class="meta">
+    <div class="title">Roland Paulsen</div>
+    <div class="sub">Austrian</div>
+    <div class="meta-p">Technical climber known for European ascents.</div>
+  </div>
+</a>
+
+<!-- 70 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Paul_Ramseyer" target="_blank">
+  <img class="img" src="images/climber_70.jpg" alt="Paul Ramseyer">
+  <div class="meta">
+    <div class="title">Paul Ramseyer</div>
+    <div class="sub">Swiss</div>
+    <div class="meta-p">Alpinist with notable ascents in Alps & Himalayas.</div>
+  </div>
+</a>
+
+<!-- 71 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Tsuneo_Hasegawa" target="_blank">
+  <img class="img" src="images/climber_71.jpg" alt="Tsuneo Hasegawa">
+  <div class="meta">
+    <div class="title">Tsuneo Hasegawa</div>
+    <div class="sub">Japanese</div>
+    <div class="meta-p">Solo winter ascents of major Himalayan routes.</div>
+  </div>
+</a>
+
+<!-- 72 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Naoki_Ito" target="_blank">
+  <img class="img" src="images/climber_72.jpg" alt="Naoki Ito">
+  <div class="meta">
+    <div class="title">Naoki Ito</div>
+    <div class="sub">Japanese</div>
+    <div class="meta-p">Known for strong alpine-style attempts.</div>
+  </div>
+</a>
+
+<!-- 73 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Yuichiro_Miura" target="_blank">
+  <img class="img" src="images/climber_73.jpg" alt="Yuichiro Miura">
+  <div class="meta">
+    <div class="title">Yuichiro Miura</div>
+    <div class="sub">Japanese</div>
+    <div class="meta-p">Oldest person to summit Everest (multiple times).</div>
+  </div>
+</a>
+
+<!-- 74 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Junko_Tabei" target="_blank">
+  <img class="img" src="images/climber_74.jpg" alt="Junko Tabei">
+  <div class="meta">
+    <div class="title">Junko Tabei</div>
+    <div class="sub">Japanese</div>
+    <div class="meta-p">First woman to summit Everest.</div>
+  </div>
+</a>
+
+<!-- 75 -->
+<a class="card" href="https://en.wikipedia.org/wiki/George_Mallory" target="_blank">
+  <img class="img" src="images/climber_75.jpg" alt="George Mallory">
+  <div class="meta">
+    <div class="title">George Mallory</div>
+    <div class="sub">British</div>
+    <div class="meta-p">Legend of Everest; disappeared on 1924 summit attempt.</div>
+  </div>
+</a>
+
+<!-- 76 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Andrew_Irvine_(mountaineer)" target="_blank">
+  <img class="img" src="images/climber_76.jpg" alt="Andrew Irvine">
+  <div class="meta">
+    <div class="title">Andrew Irvine</div>
+    <div class="sub">British</div>
+    <div class="meta-p">Mallory’s climbing partner on the 1924 Everest attempt.</div>
+  </div>
+</a>
+
+<!-- 77 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Noel_Odell" target="_blank">
+  <img class="img" src="images/climber_77.jpg" alt="Noel Odell">
+  <div class="meta">
+    <div class="title">Noel Odell</div>
+    <div class="sub">British</div>
+    <div class="meta-p">Last person to see Mallory & Irvine alive.</div>
+  </div>
+</a>
+
+<!-- 78 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Edmund_Hillary" target="_blank">
+  <img class="img" src="images/climber_78.jpg" alt="Edmund Hillary">
+  <div class="meta">
+    <div class="title">Sir Edmund Hillary</div>
+    <div class="sub">New Zealander</div>
+    <div class="meta-p">First confirmed Everest summit (1953).</div>
+  </div>
+</a>
+
+<!-- 79 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Tenzing_Norgay" target="_blank">
+  <img class="img" src="images/climber_79.jpg" alt="Tenzing Norgay">
+  <div class="meta">
+    <div class="title">Tenzing Norgay</div>
+    <div class="sub">Nepali-Indian Sherpa</div>
+    <div class="meta-p">Historic Everest summit with Hillary.</div>
+  </div>
+</a>
+
+<!-- 80 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Bill_Tilman" target="_blank">
+  <img class="img" src="images/climber_80.jpg" alt="Bill Tilman">
+  <div class="meta">
+    <div class="title">Bill Tilman</div>
+    <div class="sub">British</div>
+    <div class="meta-p">Legendary explorer & mountaineer of the Himalaya.</div>
+  </div>
+</a>
+
+<!-- 81 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Eric_Shipton" target="_blank">
+  <img class="img" src="images/climber_81.jpg" alt="Eric Shipton">
+  <div class="meta">
+    <div class="title">Eric Shipton</div>
+    <div class="sub">British</div>
+    <div class="meta-p">Key Everest explorer; Himalayan pioneer.</div>
+  </div>
+</a>
+
+<!-- 82 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Nirmal_Purja" target="_blank">
+  <img class="img" src="images/climber_82.jpg" alt="Nirmal Purja">
+  <div class="meta">
+    <div class="title">Nirmal Purja (Nimsdai)</div>
+    <div class="sub">Nepali</div>
+    <div class="meta-p">Record-shattering 14×8000ers in 6 months.</div>
+  </div>
+</a>
+
+<!-- 83 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Mingma_Gyalje_Sherpa" target="_blank">
+  <img class="img" src="images/climber_83.jpg" alt="Mingma Gyalje Sherpa">
+  <div class="meta">
+    <div class="title">Mingma Gyalje Sherpa</div>
+    <div class="sub">Nepali Sherpa</div>
+    <div class="meta-p">Founder of Imagine Nepal; elite Himalayan climber.</div>
+  </div>
+</a>
+
+<!-- 84 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Sanu_Sherpa" target="_blank">
+  <img class="img" src="images/climber_84.jpg" alt="Sanu Sherpa">
+  <div class="meta">
+    <div class="title">Sanu Sherpa</div>
+    <div class="sub">Nepali Sherpa</div>
+    <div class="meta-p">First to climb all 14×8000ers twice.</div>
+  </div>
+</a>
+
+<!-- 85 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Mingma_David_Sherpa" target="_blank">
+  <img class="img" src="images/climber_85.jpg" alt="Mingma David Sherpa">
+  <div class="meta">
+    <div class="title">Mingma David Sherpa</div>
+    <div class="sub">Nepali Sherpa</div>
+    <div class="meta-p">World record for fastest K2 traverse support team.</div>
+  </div>
+</a>
+
+<!-- 86 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Tashi_Lakpa_Sherpa" target="_blank">
+  <img class="img" src="images/climber_86.jpg" alt="Tashi Lakpa Sherpa">
+  <div class="meta">
+    <div class="title">Tashi Lakpa Sherpa</div>
+    <div class="sub">Nepali Sherpa</div>
+    <div class="meta-p">Seven Summits + Everest records.</div>
+  </div>
+</a>
+
+<!-- 87 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Lakpa_Rita_Sherpa" target="_blank">
+  <img class="img" src="images/climber_87.jpg" alt="Lakpa Rita Sherpa">
+  <div class="meta">
+    <div class="title">Lakpa Rita Sherpa</div>
+    <div class="sub">Nepali Sherpa</div>
+    <div class="meta-p">First Sherpa to complete the Seven Summits.</div>
+  </div>
+</a>
+
+<!-- 88 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Ang_Rita_Sherpa" target="_blank">
+  <img class="img" src="images/climber_88.jpg" alt="Ang Rita Sherpa">
+  <div class="meta">
+    <div class="title">Ang Rita Sherpa</div>
+    <div class="sub">Nepali Sherpa</div>
+    <div class="meta-p">Known as “Snow Leopard”; 10 Everest ascents without O2.</div>
+  </div>
+</a>
+
+<!-- 89 -->
+<a class="card" href="https://en.wikipedia.org/wiki/PemDorjee" target="_blank">
+  <img class="img" src="images/climber_89.jpg" alt="Pem Dorjee Sherpa">
+  <div class="meta">
+    <div class="title">Pem Dorjee Sherpa</div>
+    <div class="sub">Nepali Sherpa</div>
+    <div class="meta-p">Set world record by marrying on Everest summit.</div>
+  </div>
+</a>
+
+<!-- 90 -->
+<a class="card" href="https://en.wikipedia.org/wiki/Rinzi_Sherpa" target="_blank">
+  <img class="img" src="images/climber_90.jpg" alt="Rinzi Sherpa">
+  <div class="meta">
+    <div class="title">Rinzi Sherpa</div>
+    <div class="sub">Nepali Sherpa</div>
+    <div class="meta-p">Acclaimed high-altitude support climber.</div>
+  </div>
+</a>
+  </div> <!-- end grid -->
+
+  <div class="footer">
+    © 2025 Altitude Echoes — Created by <strong>Manoj Inturi</strong>
+  </div>
+
+</main>
+
+<script>
+  // NAV SCROLL LOGIC (exact behavior)
+  const nav = document.querySelector(".nav");
+  const logo = document.getElementById("logo-img");
+  const echo = document.getElementById("echo-text");
+
+  function onScroll(){
+    if(window.scrollY > 8){
+      nav.classList.add("scrolled");
+      if(logo) logo.src = "images/logoafter-removebg-preview.png";
+      if(echo) echo.style.color = "#007bff";
+    } else {
+      nav.classList.remove("scrolled");
+      if(logo) logo.src = "images/logobefore-removebg-preview.png";
+      if(echo) echo.style.color = "white";
+    }
+  }
+
+  window.addEventListener("scroll", onScroll, {passive:true});
+  document.addEventListener("DOMContentLoaded", onScroll);
+</script>
+
+</body>
+</html>

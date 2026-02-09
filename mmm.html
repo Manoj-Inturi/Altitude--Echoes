@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>8000ers & Death Zone — Mount Everest</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;500&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #fbf8f4;             
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #6b7280;
+      --accent: #C19A6B;         
+      --blue: #007bff;
+      --radius: 14px;
+      --max-width: 1200px;
+      --container-pad: 36px;
+    }
+
+    /* Reset + base */
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      margin:0;
+      background:var(--bg);
+      font-family: Montserrat, system-ui;
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit;}
+
+    /* ---------------------------------------------- */
+    /* FULL-WIDTH NAVBAR (Option 3) */
+    /* ---------------------------------------------- */
+
+    .main-nav-wrapper{
+      width:100%;
+      background:var(--bg);
+      padding:18px 60px;
+      border-bottom:1px solid #e3ddd5;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .main-nav-left{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .main-nav-left img{
+      width:55px;
+      height:55px;
+      object-fit:contain;
+    }
+
+    .main-nav-left h1{
+      font-size:22px;
+      font-weight:700;
+      font-family:"Playfair Display", serif;
+      letter-spacing:0.4px;
+      color:#1f1f1f;
+    }
+
+    .main-nav-links{
+      display:flex;
+      gap:26px;
+      align-items:center;
+    }
+
+    .main-nav-links a{
+      font-size:15px;
+      font-weight:600;
+      color:#3c3c3c;
+      position:relative;
+      padding:6px 0;
+      transition:0.25s ease;
+    }
+
+    .main-nav-links a::after{
+      content:"";
+      width:0%;
+      height:2px;
+      background:var(--blue);
+      position:absolute;
+      left:0;
+      bottom:-4px;
+      transition:0.25s ease;
+    }
+
+    .main-nav-links a:hover{
+      color:var(--blue);
+    }
+    .main-nav-links a:hover::after{
+      width:100%;
+    }
+
+    /* ---------------------------------------------- */
+    /* PAGE WRAPPER */
+    /* ---------------------------------------------- */
+
+    .site{
+      max-width:var(--max-width);
+      margin:40px auto;
+      padding:0 var(--container-pad);
+    }
+
+    /* Intro grid */
+    .intro{
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:28px;
+      margin:28px 0 36px;
+    }
+
+    .intro .lead{
+      background:#fff;
+      padding:28px;
+      border-radius:12px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.06);
+    }
+
+    .eyebrow{
+      font-size:12px;
+      font-weight:700;
+      color:var(--accent);
+      text-transform:uppercase;
+      margin-bottom:12px;
+    }
+
+    .intro h2{
+      font-family:"Playfair Display",serif;
+      font-size:34px;
+      margin-bottom:6px;
+    }
+
+    .meta{
+      display:flex;
+      gap:12px;
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:12px;
+    }
+    .meta .badge{
+      background:rgba(193,154,107,0.15);
+      padding:6px 12px;
+      border-radius:999px;
+      color:var(--accent);
+      font-weight:700;
+    }
+
+    .hero-photo{
+      aspect-ratio:3/4;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 8px 20px rgba(0,0,0,0.06);
+    }
+    .hero-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    /* Article sections */
+    .card{
+      background:#fff;
+      padding:28px;
+      border-radius:12px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.05);
+      margin-bottom:28px;
+    }
+
+    .article{
+      display:grid;
+      grid-template-columns:46% 1fr;
+      gap:34px;
+      align-items:start;
+    }
+    .article.reverse{
+      grid-template-columns:1fr 46%;
+    }
+
+    .imgwrap{
+      border-radius:12px;
+      overflow:hidden;
+      aspect-ratio:16/10;
+      box-shadow:0 8px 18px rgba(0,0,0,0.05);
+    }
+    .imgwrap img{
+      width:100%;height:100%;object-fit:cover;
+    }
+
+    .article h3{
+      font-family:"Playfair Display",serif;
+      font-size:26px;
+      margin-bottom:6px;
+    }
+
+    .rule{
+      width:60px;
+      height:4px;
+      background:var(--accent);
+      border-radius:4px;
+      margin:12px 0 18px;
+    }
+
+    .article .content p{
+      font-size:15.5px;
+      color:var(--muted);
+      text-align:justify;
+      margin-bottom:16px;
+    }
+
+    .full-para{margin-top:18px;}
+
+    /* Footer */
+    footer.site-foot{
+      background:#10161d;
+      color:#e6e9ed;
+      padding:32px;
+      margin-top:40px;
+      border-radius:12px;
+    }
+
+    .foot-inner{
+      display:flex;
+      gap:28px;
+      flex-wrap:wrap;
+    }
+
+    footer h4{
+      font-family:"Playfair Display",serif;
+      color:#fff;
+      margin-bottom:12px;
+      font-size:18px;
+    }
+
+    .foot-col a{
+      color:#cfcfcf;
+      margin-bottom:8px;
+      display:block;
+      font-size:14px;
+    }
+
+    .foot-note{
+      font-size:13px;
+      color:#9aa3ad;
+      margin-top:12px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ======================================== -->
+  <!-- NEW FULL-WIDTH NAVBAR (Option 3) -->
+  <!-- ======================================== -->
+
+  <div class="main-nav-wrapper">
+    <div class="main-nav-left">
+      <img src="images/logoafter-removebg-preview.png" alt="Altitude Echoes Logo">
+      <h1>Altitude Echoes</h1>
+    </div>
+
+    <div class="main-nav-links">
+      <a href="index.html">Home</a>
+      <a href="8000.html">8000ers</a>
+      <a href="mountaneers.html">Mountaineers</a>
+      <a href="documentaries.html">Documentaries</a>
+      <a href="#">Altitude Sickness</a>
+      <a href="#">Courses</a>
+    </div>
+  </div>
+
+  <!-- ======================================== -->
+  <!-- PAGE START -->
+  <!-- ======================================== -->
+
+  <div class="site">
+
+    <!-- Intro Section -->
+    <section class="intro">
+      <div class="lead card">
+        <div class="eyebrow">Featured</div>
+        <h2>Mount Everest — 8,848.86 m</h2>
+
+        <div class="meta">
+          <div class="badge">Himalaya</div>
+          <div>Border: Nepal — Tibet (China)</div>
+        </div>
+
+        <p>
+          Mount Everest is the highest point on Earth. This page explores its geography,
+          climbing history, dangers, and the cultural context around the mountain.
+          The layout below uses a magazine-style format with images and rich editorial copy
+          for an elegant, readable experience.
+        </p>
+      </div>
+
+      <figure class="hero-photo">
+        <img src="images/Mount_Everest_as_seen_from_Drukair2_PLW_edit_Cropped.jpg" alt="Mount Everest panorama" />
+      </figure>
+    </section>
+
+    <!-- ARTICLE 1 -->
+    <article class="card article">
+      <div class="imgwrap">
+        <img src="images/Mount_Everest_as_seen_from_Drukair2_PLW_edit_Cropped.jpg" alt="">
+      </div>
+      <div class="content">
+        <h3>Geography and Location</h3>
+        <div class="rule"></div>
+
+        <p>Mount Everest, rising to 8,848.86 meters...</p>
+        <p class="full-para">The mountain’s glaciers feed...</p>
+      </div>
+    </article>
+
+    <!-- ARTICLE 2 -->
+    <article class="card article reverse">
+      <div class="imgwrap">
+        <img src="images/Sixty Years Ago, Edm.png">
+      </div>
+      <div class="content">
+        <h3>Climbing History and Expeditions</h3>
+        <div class="rule"></div>
+
+        <p>Attempts on Everest began...</p>
+        <p class="full-para">The latter 20th century brought...</p>
+      </div>
+    </article>
+
+    <!-- ARTICLE 3 -->
+    <article class="card article">
+      <div class="imgwrap">
+        <img src="images/dangers.jpg">
+      </div>
+      <div class="content">
+        <h3>Challenges and Dangers</h3>
+        <div class="rule"></div>
+
+        <p>Everest’s “death zone” above...</p>
+        <p class="full-para">Human factors — overcrowding...</p>
+      </div>
+    </article>
+
+    <!-- ARTICLE 4 -->
+    <article class="card article reverse">
+      <div class="imgwrap">
+        <img src="images/culture.png">
+      </div>
+      <div class="content">
+        <h3>Culture, Conservation & Tourism</h3>
+        <div class="rule"></div>
+
+        <p>Everest is sacred to local communities...</p>
+        <p class="full-para">Conservation efforts — led by local...</p>
+      </div>
+    </article>
+
+  </div> <!-- end .site -->
+
+
+  <!-- Footer -->
+  <footer class="site-foot">
+    <div class="foot-inner">
+
+      <div class="foot-col">
+        <h4>About this Page</h4>
+        <p>An educational project covering 8000m peaks.</p>
+        <p class="foot-note">Created by <strong>Manoj Inturi</strong> • © 2025</p>
+      </div>
+
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="8000.html">8000 Meter Peaks</a>
+        <a href="everest.html">Everest</a>
+        <a href="k2.html">K2</a>
+      </div>
+
+      <div class="foot-col">
+        <h4>Resources</h4>
+        <a href="#">Trekking Guides</a>
+        <a href="#">Expedition Safety</a>
+        <a href="#">Altitude Sickness</a>
+      </div>
+
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="mailto:contact@example.com">contact@example.com</a>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>

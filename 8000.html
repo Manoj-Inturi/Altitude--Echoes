@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>The 14 Eight-Thousanders — Altitude Echoes</title>
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #fbf8f4;
+        --card: #ffffff;
+        --text: #1f2933;
+        --muted: #5b6670;
+        --accent: #007bff;
+        --max-width: 1200px;
+        --soft-shadow: 0 14px 36px rgba(16, 24, 32, 0.06);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        font-family: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto,
+          Arial;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* NAVBAR */
+      .nav {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 40px;
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(8px);
+        transition: 0.36s;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .logo img {
+        width: 56px;
+        height: 56px;
+        object-fit: contain;
+      }
+      .logo-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1;
+      }
+      .logo-text h2 {
+        margin: 0;
+        font-family: "Montserrat";
+        color: #fff;
+        font-size: 18px;
+        text-transform: uppercase;
+      }
+      .logo-text h2 + h2 {
+        font-weight: 700;
+        color: var(--accent);
+        font-size: 20px;
+      }
+      .subnav {
+        display: flex;
+        gap: 26px;
+      }
+      .subnav a {
+        color: #fff;
+        font-weight: 600;
+        font-size: 15px;
+        padding: 4px 6px;
+        position: relative;
+      }
+      .subnav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 0;
+        height: 2px;
+        background: var(--accent);
+        transition: 0.28s;
+      }
+      .subnav a:hover {
+        color: var(--accent);
+      }
+      .subnav a:hover::after {
+        width: 100%;
+      }
+      .nav.scrolled {
+        background: #fff;
+        box-shadow: 0 4px 22px rgba(12, 18, 24, 0.08);
+        padding: 12px 32px;
+      }
+      .nav.scrolled .logo-text h2 {
+        color: #222;
+      }
+      .nav.scrolled .logo-text h2 + h2 {
+        color: var(--accent);
+      }
+      .nav.scrolled .subnav a {
+        color: #222 !important;
+      }
+
+      /* PAGE */
+      .page {
+        max-width: var(--max-width);
+        margin: 120px auto 80px;
+        padding: 0 20px;
+      }
+      .page-header {
+        text-align: center;
+        margin-bottom: 26px;
+      }
+      .page-header h1 {
+        font-family: "Playfair Display";
+        font-size: 36px;
+        color: var(--accent);
+        margin-bottom: 6px;
+      }
+      .page-header p {
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      /* EIGHTK BOX */
+      .eightk-box {
+        max-width: 1200px;
+        margin: 32px auto 50px;
+        background: #ffffffcc;
+        backdrop-filter: blur(4px);
+        border-radius: 18px;
+        padding: 36px 26px 32px;
+        box-shadow: 0 18px 44px rgba(16, 24, 32, 0.07);
+        text-align: center;
+      }
+      .eightk-title {
+        font-family: "Montserrat";
+        font-size: 32px;
+        color: #083a83;
+        margin-bottom: 6px;
+      }
+      .eightk-subtitle {
+        font-size: 15px;
+        color: var(--muted);
+        margin-bottom: 26px;
+      }
+
+      .eightk-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 32px;
+      }
+
+      .circle {
+        width: 118px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .circle img {
+        width: 118px;
+        height: 118px;
+        object-fit: cover;
+        border-radius: 50%;
+        box-shadow: 0 12px 32px rgba(12, 18, 30, 0.085);
+        transition: 0.26s;
+      }
+      .circle span {
+        margin-top: 6px;
+        font-family: "Montserrat";
+        font-size: 13.4px;
+        color: #1f2933;
+        text-align: center;
+      }
+      .circle:hover img {
+        transform: scale(1.07) translateY(-4px);
+        box-shadow: 0 30px 80px rgba(8, 58, 131, 0.14);
+      }
+
+      @media (max-width: 620px) {
+        .circle img {
+          width: 78px;
+          height: 78px;
+        }
+        .circle span {
+          font-size: 11.6px;
+        }
+        .eightk-grid {
+          gap: 18px;
+        }
+      }
+
+      /* DIVIDER */
+      .divider svg {
+        display: block;
+        width: 100%;
+        height: 90px;
+      }
+
+      /* CONTENT SECTIONS */
+      .content-area {
+        background: #fff;
+        padding: 40px 16px 60px;
+        border-radius: 8px;
+        margin-top: -2px;
+      }
+      .sections {
+        display: flex;
+        flex-direction: column;
+        gap: 34px;
+        max-width: var(--max-width);
+        margin: 0 auto;
+      }
+      .section-row {
+        display: grid;
+        grid-template-columns: 1fr 380px;
+        gap: 28px;
+        align-items: center;
+      }
+      .section-row.reverse {
+        grid-template-columns: 380px 1fr;
+      }
+      .section-card {
+        background: var(--card);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--soft-shadow);
+      }
+      .section-img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+      }
+      .section-text {
+        padding: 22px;
+        font-size: 15.5px;
+        color: var(--muted);
+      }
+      .section-text h3 {
+        font-family: "Montserrat";
+        margin-bottom: 6px;
+        font-size: 20px;
+        color: var(--text);
+      }
+
+      @media (max-width: 900px) {
+        .section-row,
+        .section-row.reverse {
+          grid-template-columns: 1fr;
+        }
+        .section-img {
+          height: 220px;
+        }
+      }
+
+      /* FOOTER */
+      footer.site-footer {
+        background: #0f1720;
+        color: #cbd5e1;
+        padding: 32px 20px;
+        margin-top: 50px;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+      }
+
+      .learn-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 8px;
+        text-decoration: none;
+        color: #007bff;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: color 0.25s ease;
+      }
+      .learn-link i {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 2px solid #007bff;
+        color: #007bff;
+        font-style: normal;
+        font-size: 16px;
+        transition: all 0.25s ease;
+      }
+      .learn-link:hover {
+        color: #0056b3;
+      }
+      .learn-link:hover i {
+        background: #007bff;
+        color: #fff;
+        border-color: #007bff;
+        transform: translateX(4px);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <div class="nav" id="site-nav">
+      <a class="logo" href="index.html">
+        <img id="logo-img" src="images/logobefore-removebg-preview.png" />
+        <div class="logo-text">
+          <h2>Altitude</h2>
+          <h2 id="echo-text">Echoes</h2>
+        </div>
+      </a>
+      <div class="subnav">
+        <a href="index.html">Home</a>
+        <a href="sevensummit.html">Seven Summits</a>
+        <a href="mountaneers.html">Mountaineers</a>
+        <a href="documentaries.html">Documentaries</a>
+        <a href="altitude.html">Altitude Sickness</a>
+        <a href="courses.html">Courses</a>
+      </div>
+    </div>
+
+    <!-- PAGE MAIN -->
+    <main class="page">
+      <header class="page-header">
+        <h1>THE 14 EIGHT-THOUSANDERS</h1>
+        <p>
+          Quick visual index — hover any peak to preview. Tap or click to open
+          each peak's page.
+        </p>
+      </header>
+
+      <!-- EIGHTK FLEX BOX -->
+      <section class="eightk-box">
+        <h2 class="eightk-title">THE 14 EIGHT-THOUSANDERS</h2>
+        <p class="eightk-subtitle">
+          Ordered highest → lowest | Names outside | Hover to preview
+        </p>
+
+        <div class="eightk-grid">
+          <a class="circle" href="everest.html"
+            ><img src="images/Mount Everest - Wiki.png" /><span
+              >Mount Everest</span
+            ></a
+          >
+          <a class="circle" href="k2.html"
+            ><img src="images/k2.jpg" /><span>K2</span></a
+          >
+          <a class="circle" href="kancherajunga.html"
+            ><img src="images/kancherajunga.jpg" /><span>Kangchenjunga</span></a
+          >
+          <a class="circle" href="lhotse.html"
+            ><img src="images/lhotse.jpg" /><span>Lhotse</span></a
+          >
+          <a class="circle" href="makalu.html"
+            ><img src="images/makalu.jpg" /><span>Makalu</span></a
+          >
+          <a class="circle" href="chooyu.html"
+            ><img src="images/chooyu.jpg" /><span>Cho Oyu</span></a
+          >
+          <a class="circle" href="dhaulagiri.html"
+            ><img src="images/dhaulagirir.jpg" /><span>Dhaulagiri</span></a
+          >
+          <a class="circle" href="manaslu.html"
+            ><img src="images/manaslu.jpg" /><span>Manaslu</span></a
+          >
+          <a class="circle" href="nangaparbat.html"
+            ><img src="images/nangaparba.jpg" /><span>Nanga Parbat</span></a
+          >
+          <a class="circle" href="annapurna.html"
+            ><img src="images/annapurna.jpg" /><span>Annapurna I</span></a
+          >
+          <a class="circle" href="g1.html"
+            ><img src="images/g1.jpg" /><span>Gasherbrum I</span></a
+          >
+          <a class="circle" href="broadpeak.html"
+            ><img src="images/broadpeak.jpg" /><span>Broad Peak</span></a
+          >
+          <a class="circle" href="g2.html"
+            ><img src="images/g2.jpg" /><span>Gasherbrum II</span></a
+          >
+          <a class="circle" href="shis.html"
+            ><img src="images/shispagma.jpg" /><span>Shishapangma</span></a
+          >
+        </div>
+      </section>
+
+      <!-- DIVIDER -->
+      <div class="divider">
+        <svg viewBox="0 0 1600 170" preserveAspectRatio="none">
+          <path
+            fill="#ffffff"
+            d="M0,120 C80,130 160,110 240,112 C320,114 400,128 480,128 C560,128 640,118 720,118 C800,118 880,130 960,132 C1040,134 1120,122 1200,118 C1280,114 1360,122 1440,126 C1520,130 1600,120 1600,120 L1600,170 L0,170 Z"
+          ></path>
+        </svg>
+      </div>
+
+      <!-- CONTENT AREA -->
+      <section class="content-area">
+        <div class="sections">
+          <div class="section-row">
+            <div class="section-card section-text">
+              <h3>The Death Zone</h3>
+              <p>
+                8,000. For most people, a perfectly innocent, somewhat
+                meaningless number. But for mountain climbers, it can be the
+                number that defines their lives forever. There are only 14
+                mountain peaks on Earth that stand taller than 8,000 meters.
+                They are the only mountains on the planet that rise into a place
+                called the Death Zone. Up here, the air contains only about
+                one-third of the oxygen found at sea level. The human body
+                cannot survive here for long — it slowly shuts down instead of
+                recovering. Movement becomes painfully slow, the heart works at
+                its maximum, and thinking becomes foggy. Without supplemental
+                oxygen, most climbers would quickly lose consciousness and
+                collapse. That’s why every second in the Death Zone counts —
+                survival depends on descending fast after summiting.
+              </p>
+              <a href="https://en.wikipedia.org/wiki/Death_zone?utm_source=chatgpt.com" target="_blank" class="learn-link"><i>&gt;</i> Learn more</a>
+            </div>
+            <div class="section-card">
+              <img
+                class="section-img"
+                src="images/Gemini_Generated_Image_jafpsojafpsojafp.png"
+              />
+            </div>
+          </div>
+
+          <div class="section-row reverse">
+            <div class="section-card">
+              <img class="section-img" src="images/hillary step (1).png" />
+            </div>
+            <div class="section-card section-text">
+              <h3>About the 8000ers</h3>
+              <p>
+                The world has fourteen mountains over 8,000 metres, all located
+                in the Himalayas and Karakoram ranges. These peaks span Nepal,
+                India, Pakistan, and Tibet/China, each presenting unique
+                challenges and risks. Routes involve steep ice faces, crevasses,
+                seracs, avalanches and extreme exposure to wind and cold.
+                Climbers must carefully acclimatize over weeks, gradually
+                pushing higher while allowing the body to adapt. Success relies
+                on logistics, weather forecasts, fixed ropes, and coordinated
+                team support on the mountain. Local communities — especially
+                Sherpa and High-Altitude Porters — play a vital role in modern
+                expeditions. These mountains hold cultural, spiritual and
+                historical significance in the regions surrounding them. Ethical
+                climbing requires respecting nature, minimizing waste and
+                supporting fair treatment of mountain workers.
+              </p>
+             <a href="https://en.wikipedia.org/wiki/Eight-thousander?utm_source=chatgpt.com" target="_blank" class="learn-link"><i>&gt;</i> Learn more</a>
+
+            </div>
+          </div>
+
+          <div class="section-row">
+            <div class="section-card section-text">
+              <h3>Climbers Who Completed All 14</h3>
+              <p>
+                Only a small number of people have summited all fourteen
+                8000-metre peaks, making it one of the rarest achievements in
+                mountaineering. Reinhold Messner was the first to complete the
+                list without supplemental oxygen, inspiring generations of
+                climbers. Jerzy Kukuczka followed soon after, proving that
+                dedication and resilience can overcome extreme adversity. Some
+                climbers take more than a decade to complete the list, while
+                others attempt them within a short time frame. The challenge
+                includes dangerous weather windows, technical climbing, and
+                unpredictable mountain conditions. Even elite climbers face
+                setbacks — injuries, failed attempts, rescues, and tragedies are
+                part of the pursuit. Ethics matter: modern climbers emphasize
+                respecting local workers, environmental protection and safety
+                limits. Completing the 14 peaks is not only about courage but
+                also about judgment, humility, and survival. Those who succeed
+                join an exclusive list, representing some of the strongest minds
+                and bodies in human history.
+              </p>
+              <a href="https://www.nationalgeographic.com/travel/article/how-climbers-faced-down-the-death-zone-on-one-of-earths-tallest-mountains" target="_blank" class="learn-link"><i>&gt;</i> Learn more</a>
+            </div>
+            <div class="section-card">
+              <img class="section-img" src="images/Tenzing Norgay On Th.png" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p style="text-align: center; font-size: 14px; color: #9fb7d8">
+        © 2025 Altitude Echoes — Created by <strong>Manoj Inturi</strong>
+      </p>
+    </footer>
+
+    <!-- SCROLL NAV SCRIPT -->
+    <script>
+      const nav = document.getElementById("site-nav");
+      const logo = document.getElementById("logo-img");
+      const echo = document.getElementById("echo-text");
+      function onScroll() {
+        if (window.scrollY > 8) {
+          nav.classList.add("scrolled");
+          logo.src = "images/logoafter-removebg-preview.png";
+          echo.style.color = "#007bff";
+        } else {
+          nav.classList.remove("scrolled");
+          logo.src = "images/logobefore-removebg-preview.png";
+          echo.style.color = "white";
+        }
+      }
+      window.addEventListener("scroll", onScroll);
+      document.addEventListener("DOMContentLoaded", onScroll);
+    </script>
+  </body>
+</html>
