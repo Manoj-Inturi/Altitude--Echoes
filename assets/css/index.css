@@ -1,0 +1,721 @@
+/* ===== Reset & Base ===== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #f5f7fa;
+        font-family: "Open Sans", sans-serif;
+        color: #222;
+        overflow-x: hidden;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* ===== Navbar ===== */
+      .nav {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 70px;
+        background: transparent;
+        transition: all 0.35s ease;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo img {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+        transition: all 0.35s ease;
+      }
+
+      .logo-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+        font-family: "Montserrat", sans-serif;
+      }
+      .logo-text h2 {
+        text-transform: uppercase;
+        font-size: 22px;
+        transition: color 0.35s ease;
+      }
+      .logo-text h2:first-child {
+        font-weight: 500;
+        color: white;
+      }
+      .logo-text h2:last-child {
+        font-weight: 700;
+        color: white;
+      }
+
+      .nav.scrolled {
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      }
+      .nav.scrolled .logo-text h2:first-child {
+        color: black;
+      }
+      .nav.scrolled .logo-text h2:last-child {
+        color: #007bff;
+      }
+
+      .subnav {
+        display: flex;
+        gap: 30px;
+      }
+      .subnav a {
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        position: relative;
+        transition: all 0.25s ease;
+      }
+      .subnav a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #007bff;
+        transition: width 0.25s ease;
+      }
+      .subnav a:hover::after {
+        width: 100%;
+      }
+      .subnav a:hover {
+        color: #007bff;
+      }
+      .nav.scrolled .subnav a {
+        color: black;
+      }
+
+      /* ===== Hero ===== */
+      .hero {
+        height: 100vh;
+        background: url("https://c.stocksy.com/a/gNb300/z9/858680.jpg")
+          no-repeat center/cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 0;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        padding: 0 20px;
+        animation: fadeInUp 1.5s ease forwards;
+      }
+      .hero-content h1 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 40px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 18px;
+        line-height: 1.3;
+        position: relative;
+      }
+      .hero-content h1::before,
+      .hero-content h1::after {
+        content: '"';
+        font-size: 80px;
+        color: rgba(255, 255, 255, 0.25);
+        position: absolute;
+        font-family: "Montserrat", sans-serif;
+      }
+      .hero-content h1::before {
+        left: -50px;
+        top: -20px;
+      }
+      .hero-content h1::after {
+        right: -50px;
+        bottom: -20px;
+      }
+      .hero-content p {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1.7;
+        color: #f1f1f1;
+      }
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      /* ===== Divider ===== */
+      .divider {
+        height: 100px;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.1),
+          rgba(0, 0, 0, 0)
+        );
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        color: #007bff;
+        font-size: 18px;
+        letter-spacing: 1px;
+      }
+
+      /* ===== Eight-Thousanders (SVG) Section ===== */
+      .mountains {
+        background: #f5f8fc;
+        padding: 100px 20px 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .mountains h2 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 30px;
+        font-weight: 600;
+        margin-bottom: 30px;
+        color: #222;
+      }
+      .mountain-wrapper {
+        width: 100%;
+        max-width: 1600px;
+        overflow-x: auto;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+      }
+      .mountain-svg {
+        width: 100%;
+        height: auto;
+        max-width: 1600px;
+        pointer-events: none;
+      }
+      .mountain-reflection {
+        max-width: 800px;
+        font-size: 16px;
+        color: #444;
+        line-height: 1.7;
+        margin-bottom: 10px;
+      }
+      .credits {
+        font-size: 14px;
+        color: #888;
+        font-style: italic;
+      }
+
+      /* ===== Mountain Rows Section (6 elements) ===== */
+      .mountain-section {
+        display: flex;
+        justify-content: center;
+        padding: 80px 0;
+        background: #f5f7fa;
+      }
+
+      .mountain-container {
+        background: #fff;
+        width: 90%;
+        max-width: 1250px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border-radius: 18px;
+        overflow: hidden;
+        padding: 0 40px; /* left/right padding 40px as requested */
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .mountain-row {
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        margin: 0;
+      }
+
+      .mountain-row.reverse {
+        flex-direction: row-reverse;
+      }
+
+      .mountain-img {
+        flex-basis: 50%;
+        height: 800px; /* fixed 800px height */
+        background-size: cover;
+        background-position: center;
+        flex-shrink: 0;
+      }
+
+      /* Make image edge align visually with center line:
+       we keep layout stable and avoid overlapping heads by fixed height and flex-basis */
+      .mountain-text {
+        flex: 1;
+        background: #fff;
+        padding: 60px 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 18px;
+      }
+
+      .mountain-text h2 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 5px;
+      }
+      .divider-line {
+        width: 20%;
+        height: 4px;
+        background-color: #007bff;
+        margin: 10px 0 0;
+        border-radius: 2px;
+      }
+      .mountain-text p {
+        font-size: 1.05rem;
+        color: #333;
+        line-height: 1.7;
+      }
+      .learn-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 8px;
+        text-decoration: none;
+        color: #007bff;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: color 0.25s ease;
+      }
+      .learn-link i {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 2px solid #007bff;
+        color: #007bff;
+        font-style: normal;
+        font-size: 16px;
+        transition: all 0.25s ease;
+      }
+      .learn-link:hover {
+        color: #0056b3;
+      }
+      .learn-link:hover i {
+        background: #007bff;
+        color: #fff;
+        border-color: #007bff;
+        transform: translateX(4px);
+      }
+
+      /* ===== Responsive ===== */
+      @media (max-width: 900px) {
+        .nav {
+          padding: 15px 25px;
+        }
+        .subnav {
+          gap: 15px;
+        }
+
+        .mountain-row,
+        .mountain-row.reverse {
+          flex-direction: column;
+        }
+        .mountain-img {
+          width: 100%;
+          height: 800px;
+        } /* keep 800px on mobile as requested */
+        .mountain-text {
+          padding: 25px;
+        }
+        .hero-content h1 {
+          font-size: 28px;
+        }
+        .hero-content p {
+          font-size: 16px;
+        }
+        .mountains h2 {
+          font-size: 24px;
+        }
+        .mountain-reflection {
+          font-size: 15px;
+        }
+      }
+
+      .mountain-footer {
+  background: #212121;
+  color: #eee;
+  padding: 60px 0 25px 0;
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
+  position: relative;
+  margin-top: 90px;
+}
+
+.footer-content {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-col {
+  flex: 1 1 180px;
+  min-width: 180px;
+  padding: 0 15px;
+}
+
+.footer-col h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.footer-col.about h2 {
+  font-size: 25px;
+  margin-bottom: 22px;
+}
+
+.footer-col a {
+  color: #91c4f2;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover {
+  color: #fff;
+}
+
+.mountain-svg {
+  width: 100%;
+  margin: 32px 0 0 0;
+}
+
+.mountain-svg svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0.13;
+}
+
+/* ===== RESPONSIVE MEDIA QUERIES ===== */
+
+/* Mobile - Small (320px to 480px) */
+@media (max-width: 480px) {
+  .nav {
+    padding: 12px 15px;
+    flex-wrap: wrap;
+  }
+
+  .logo img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .logo-text h2 {
+    font-size: 16px;
+  }
+
+  .subnav {
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    order: 3;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .subnav a {
+    font-size: 14px;
+  }
+
+  .hero-content h1 {
+    font-size: 24px;
+    letter-spacing: 0;
+  }
+
+  .hero-content h1::before,
+  .hero-content h1::after {
+    font-size: 50px;
+    left: -30px;
+    right: -30px;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .mountain-container {
+    width: 95%;
+    padding: 0 15px;
+    border-radius: 12px;
+  }
+
+  .mountain-row,
+  .mountain-row.reverse {
+    flex-direction: column;
+  }
+
+  .mountain-img {
+    height: 300px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .mountain-text {
+    padding: 20px 15px;
+  }
+
+  .mountain-text h2 {
+    font-size: 1.3rem;
+  }
+
+  .mountain-text p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .learn-link {
+    font-size: 14px;
+  }
+
+  .mountains h2 {
+    font-size: 22px;
+    padding: 0 10px;
+  }
+
+  .mountain-reflection {
+    font-size: 14px;
+    padding: 0 15px;
+  }
+
+  .divider {
+    font-size: 14px;
+    height: 60px;
+  }
+
+  .mountain-section {
+    padding: 40px 0;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    padding: 0 15px;
+  }
+
+  .footer-col {
+    flex: 1 1 100%;
+    margin-bottom: 25px;
+    padding: 0;
+  }
+
+  .footer-col h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+}
+
+/* Tablet (481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .nav {
+    padding: 15px 30px;
+  }
+
+  .logo img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .logo-text h2 {
+    font-size: 18px;
+  }
+
+  .subnav {
+    gap: 15px;
+    font-size: 14px;
+  }
+
+  .subnav a {
+    font-size: 14px;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+  .mountain-container {
+    width: 95%;
+    padding: 0 20px;
+  }
+
+  .mountain-row,
+  .mountain-row.reverse {
+    flex-direction: column;
+  }
+
+  .mountain-img {
+    height: 400px;
+    width: 100%;
+  }
+
+  .mountain-text {
+    padding: 30px 20px;
+  }
+
+  .mountain-text h2 {
+    font-size: 1.6rem;
+  }
+
+  .mountain-text p {
+    font-size: 15px;
+  }
+
+  .mountains h2 {
+    font-size: 26px;
+  }
+
+  .mountain-section {
+    padding: 60px 0;
+  }
+
+  .footer-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 20px;
+  }
+
+  .footer-col {
+    flex: 1 1 45%;
+    margin-bottom: 25px;
+  }
+
+  .mountain-wrapper {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+
+  .mountain-svg {
+    max-width: 100%;
+  }
+}
+
+/* Small Desktop (769px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .nav {
+    padding: 18px 40px;
+  }
+
+  .subnav {
+    gap: 20px;
+  }
+
+  .subnav a {
+    font-size: 15px;
+  }
+
+  .mountain-container {
+    width: 90%;
+    padding: 0 30px;
+  }
+
+  .mountain-row,
+  .mountain-row.reverse {
+    flex-direction: row;
+  }
+
+  .mountain-img {
+    height: 500px;
+  }
+
+  .mountain-text h2 {
+    font-size: 1.8rem;
+  }
+
+  .mountains h2 {
+    font-size: 28px;
+  }
+
+  .footer-col {
+    flex: 1 1 30%;
+  }
+}
+
+/* Large Desktop (1025px+) */
+@media (min-width: 1025px) {
+  .nav {
+    padding: 18px 70px;
+  }
+
+  .mountain-container {
+    width: 90%;
+    max-width: 1250px;
+    padding: 0 40px;
+  }
+
+  .mountain-row,
+  .mountain-row.reverse {
+    flex-direction: row;
+  }
+
+  .mountain-img {
+    height: 800px;
+  }
+}
+
+/* Touch-friendly adjustments */
+@media (hover: none) and (pointer: coarse) {
+  .subnav a::after {
+    bottom: -6px;
+  }
+
+  .learn-link {
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+
+  button, a.learn-link {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}

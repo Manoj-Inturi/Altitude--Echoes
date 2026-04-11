@@ -11,444 +11,8 @@
       rel="stylesheet"
     />
 
-    <style>
-      /* ===== Reset & Base ===== */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
 
-      body {
-        background: #f5f7fa;
-        font-family: "Open Sans", sans-serif;
-        color: #222;
-        overflow-x: hidden;
-      }
-
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-
-      /* ===== Navbar ===== */
-      .nav {
-        width: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 1000;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 18px 70px;
-        background: transparent;
-        transition: all 0.35s ease;
-      }
-
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .logo img {
-        width: 60px;
-        height: 60px;
-        object-fit: contain;
-        transition: all 0.35s ease;
-      }
-
-      .logo-text {
-        display: flex;
-        flex-direction: column;
-        line-height: 1.1;
-        font-family: "Montserrat", sans-serif;
-      }
-      .logo-text h2 {
-        text-transform: uppercase;
-        font-size: 22px;
-        transition: color 0.35s ease;
-      }
-      .logo-text h2:first-child {
-        font-weight: 500;
-        color: white;
-      }
-      .logo-text h2:last-child {
-        font-weight: 700;
-        color: white;
-      }
-
-      .nav.scrolled {
-        background: white;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-      }
-      .nav.scrolled .logo-text h2:first-child {
-        color: black;
-      }
-      .nav.scrolled .logo-text h2:last-child {
-        color: #007bff;
-      }
-
-      .subnav {
-        display: flex;
-        gap: 30px;
-      }
-      .subnav a {
-        color: white;
-        font-size: 16px;
-        font-weight: 500;
-        position: relative;
-        transition: all 0.25s ease;
-      }
-      .subnav a::after {
-        content: "";
-        position: absolute;
-        bottom: -4px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: #007bff;
-        transition: width 0.25s ease;
-      }
-      .subnav a:hover::after {
-        width: 100%;
-      }
-      .subnav a:hover {
-        color: #007bff;
-      }
-      .nav.scrolled .subnav a {
-        color: black;
-      }
-
-      /* ===== Hero ===== */
-      .hero {
-        height: 100vh;
-        background: url("https://c.stocksy.com/a/gNb300/z9/858680.jpg")
-          no-repeat center/cover;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        color: white;
-        position: relative;
-        overflow: hidden;
-      }
-      .hero::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.45);
-        z-index: 0;
-      }
-      .hero-content {
-        position: relative;
-        z-index: 2;
-        max-width: 800px;
-        padding: 0 20px;
-        animation: fadeInUp 1.5s ease forwards;
-      }
-      .hero-content h1 {
-        font-family: "Montserrat", sans-serif;
-        font-size: 40px;
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        margin-bottom: 18px;
-        line-height: 1.3;
-        position: relative;
-      }
-      .hero-content h1::before,
-      .hero-content h1::after {
-        content: '"';
-        font-size: 80px;
-        color: rgba(255, 255, 255, 0.25);
-        position: absolute;
-        font-family: "Montserrat", sans-serif;
-      }
-      .hero-content h1::before {
-        left: -50px;
-        top: -20px;
-      }
-      .hero-content h1::after {
-        right: -50px;
-        bottom: -20px;
-      }
-      .hero-content p {
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 1.7;
-        color: #f1f1f1;
-      }
-      @keyframes fadeInUp {
-        0% {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        100% {
-          opacity: 1;
-          transform: none;
-        }
-      }
-
-      /* ===== Divider ===== */
-      .divider {
-        height: 100px;
-        background: linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.1),
-          rgba(0, 0, 0, 0)
-        );
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: "Montserrat", sans-serif;
-        font-weight: 600;
-        color: #007bff;
-        font-size: 18px;
-        letter-spacing: 1px;
-      }
-
-      /* ===== Eight-Thousanders (SVG) Section ===== */
-      .mountains {
-        background: #f5f8fc;
-        padding: 100px 20px 60px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      .mountains h2 {
-        font-family: "Montserrat", sans-serif;
-        font-size: 30px;
-        font-weight: 600;
-        margin-bottom: 30px;
-        color: #222;
-      }
-      .mountain-wrapper {
-        width: 100%;
-        max-width: 1600px;
-        overflow-x: auto;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 30px;
-      }
-      .mountain-svg {
-        width: 100%;
-        height: auto;
-        max-width: 1600px;
-        pointer-events: none;
-      }
-      .mountain-reflection {
-        max-width: 800px;
-        font-size: 16px;
-        color: #444;
-        line-height: 1.7;
-        margin-bottom: 10px;
-      }
-      .credits {
-        font-size: 14px;
-        color: #888;
-        font-style: italic;
-      }
-
-      /* ===== Mountain Rows Section (6 elements) ===== */
-      .mountain-section {
-        display: flex;
-        justify-content: center;
-        padding: 80px 0;
-        background: #f5f7fa;
-      }
-
-      .mountain-container {
-        background: #fff;
-        width: 90%;
-        max-width: 1250px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        border-radius: 18px;
-        overflow: hidden;
-        padding: 0 40px; /* left/right padding 40px as requested */
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-      }
-
-      .mountain-row {
-        display: flex;
-        align-items: stretch;
-        justify-content: center;
-        margin: 0;
-      }
-
-      .mountain-row.reverse {
-        flex-direction: row-reverse;
-      }
-
-      .mountain-img {
-        flex-basis: 50%;
-        height: 800px; /* fixed 800px height */
-        background-size: cover;
-        background-position: center;
-        flex-shrink: 0;
-      }
-
-      /* Make image edge align visually with center line:
-       we keep layout stable and avoid overlapping heads by fixed height and flex-basis */
-      .mountain-text {
-        flex: 1;
-        background: #fff;
-        padding: 60px 40px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 18px;
-      }
-
-      .mountain-text h2 {
-        font-family: "Montserrat", sans-serif;
-        font-size: 2rem;
-        font-weight: 700;
-        color: #333;
-        margin-bottom: 5px;
-      }
-      .divider-line {
-        width: 20%;
-        height: 4px;
-        background-color: #007bff;
-        margin: 10px 0 0;
-        border-radius: 2px;
-      }
-      .mountain-text p {
-        font-size: 1.05rem;
-        color: #333;
-        line-height: 1.7;
-      }
-      .learn-link {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-top: 8px;
-        text-decoration: none;
-        color: #007bff;
-        font-family: "Montserrat", sans-serif;
-        font-weight: 600;
-        font-size: 1rem;
-        transition: color 0.25s ease;
-      }
-      .learn-link i {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        border: 2px solid #007bff;
-        color: #007bff;
-        font-style: normal;
-        font-size: 16px;
-        transition: all 0.25s ease;
-      }
-      .learn-link:hover {
-        color: #0056b3;
-      }
-      .learn-link:hover i {
-        background: #007bff;
-        color: #fff;
-        border-color: #007bff;
-        transform: translateX(4px);
-      }
-
-      /* ===== Responsive ===== */
-      @media (max-width: 900px) {
-        .nav {
-          padding: 15px 25px;
-        }
-        .subnav {
-          gap: 15px;
-        }
-
-        .mountain-row,
-        .mountain-row.reverse {
-          flex-direction: column;
-        }
-        .mountain-img {
-          width: 100%;
-          height: 800px;
-        } /* keep 800px on mobile as requested */
-        .mountain-text {
-          padding: 25px;
-        }
-        .hero-content h1 {
-          font-size: 28px;
-        }
-        .hero-content p {
-          font-size: 16px;
-        }
-        .mountains h2 {
-          font-size: 24px;
-        }
-        .mountain-reflection {
-          font-size: 15px;
-        }
-      }
-
-      .mountain-footer {
-  background: #212121;
-  color: #eee;
-  padding: 60px 0 25px 0;
-  width: 100%;
-  font-family: 'Open Sans', sans-serif;
-  position: relative;
-  margin-top: 90px;
-}
-
-.footer-content {
-  max-width: 1300px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.footer-col {
-  flex: 1 1 180px;
-  min-width: 180px;
-  padding: 0 15px;
-}
-
-.footer-col h2 {
-  font-size: 22px;
-  margin-bottom: 20px;
-  color: #fff;
-}
-
-.footer-col.about h2 {
-  font-size: 25px;
-  margin-bottom: 22px;
-}
-
-.footer-col a {
-  color: #91c4f2;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.footer-col a:hover {
-  color: #fff;
-}
-
-.mountain-svg {
-  width: 100%;
-  margin: 32px 0 0 0;
-}
-
-.mountain-svg svg {
-  width: 100%;
-  height: auto;
-  display: block;
-  opacity: 0.13;
-}
-
-    </style>
+    <link rel="stylesheet" href="assets/css/index.css" />
   </head>
 
   <body>
@@ -457,7 +21,7 @@
       <a href="#hero" class="logo">
         <img
           id="logo-img"
-          src="images/logobefore-removebg-preview.png"
+          src="assets/images/logos/logobefore-removebg-preview.png"
           alt="Altitude Echoes Logo"
         />
         <div class="logo-text">
@@ -467,10 +31,10 @@
       </a>
 
       <div class="subnav">
-        <a href="8000.html">8000ers</a>
-        <a href="sevensummit.html">Seven Summits</a>
-        <a href="mountaneers.html">Mountaineers</a>
-        <a href="documentaries.html">Documentaries</a>
+        <a href="pages/peaks/8000.html">8000ers</a>
+        <a href="pages/other/sevensummit.html">Seven Summits</a>
+        <a href="pages/other/mountaneers.html">Mountaineers</a>
+        <a href="pages/other/documentaries.html">Documentaries</a>
         <a href="#altitude-sickness">Altitude Sickness</a>
         <a href="#courses">Courses</a>
       </div>
@@ -496,7 +60,7 @@
       <div class="mountain-wrapper">
         <object
           id="mountainMap"
-          data="paths.svg"
+          data="assets/svg/paths.svg"
           type="image/svg+xml"
           class="mountain-svg"
         ></object>
@@ -516,11 +80,11 @@
           <div
             class="mountain-img"
             style="
-              background-image: url('images/Gemini_Generated_Image_jafpsojafpsojafp.png');
+              background-image: url('assets/images/general/Gemini_Generated_Image_jafpsojafpsojafp.png');
             "
           ></div>
           <div class="mountain-text">
-            <h2><a href="8000.html">Death Zone</a></h2>
+            <h2><a href="pages/peaks/8000.html">Death Zone</a></h2>
             <div class="divider-line"></div>
             <p>
               <strong>8,000.</strong> For most people, a perfectly innocent,
@@ -530,17 +94,17 @@
               stand taller than 8,000 meters, the only mountains on the planet
               that tower into an area called the <strong>Death Zone</strong>.
             </p>
-            <a href="8000.html" class="learn-link"><i>&gt;</i> Learn more</a>
+            <a href="pages/peaks/8000.html" class="learn-link"><i>&gt;</i> Learn more</a>
           </div>
         </div>
 
         <div class="mountain-row reverse">
           <div
             class="mountain-img"
-            style="background-image: url('images/sevensummit.png')"
+            style="background-image: url('assets/images/logos/sevensummit.png')"
           ></div>
           <div class="mountain-text">
-            <h2><a href="sevensummit.html">The Seven Summits</a></h2>
+            <h2><a href="pages/other/sevensummit.html">The Seven Summits</a></h2>
             <div class="divider-line"></div>
             <p>
               The Seven Summits represent the tallest mountains on each of the
@@ -554,7 +118,7 @@
               proving that determination and perseverance can take you to the
               highest points of the planet.
             </p>
-            <a href="sevensummit.html" class="learn-link"
+            <a href="pages/other/sevensummit.html" class="learn-link"
               ><i>&gt;</i> Learn more</a
             >
           </div>
@@ -563,10 +127,10 @@
         <div class="mountain-row">
           <div
             class="mountain-img"
-            style="background-image: url('images/Mountaneer.png')"
+            style="background-image: url('assets/images/general/Mountaneer.png')"
           ></div>
           <div class="mountain-text">
-            <h2><a href="mountaneers.html">“Mountaineers: Masters of the Peaks</a></h2>
+            <h2><a href="pages/other/mountaneers.html">Mountaineers: Masters of the Peaks</a></h2>
             <div class="divider-line"></div>
             <p>
               Mountaineers are individuals driven by an insatiable passion for
@@ -580,18 +144,18 @@
               unyielding desire to push beyond the ordinary and touch the
               extraordinary heights of the Earth.
             </p>
-            <a href="mountaneers.html" class="learn-link"><i>&gt;</i> Learn more</a>
+            <a href="pages/other/mountaneers.html" class="learn-link"><i>&gt;</i> Learn more</a>
           </div>
         </div>
 
         <div class="mountain-row reverse">
           <div
             class="mountain-img"
-            style="background-image: url('images/documentaries.png')"
+            style="background-image: url('assets/images/logos/documentaries.png')"
           ></div>
           <div class="mountain-text">
             <h2>
-              <a href="documentaries.html"
+              <a href="pages/other/documentaries.html"
                 >Mountaineering Documentaries: Witnessing the Ultimate
                 Challenge</a
               >
@@ -609,14 +173,14 @@
               landscapes but also inspires audiences to respect the mountains
               and the indomitable spirit of those who dare to climb them.
             </p>
-            <a href="documentaries.html" class="learn-link"><i>&gt;</i> Learn more</a>
+            <a href="pages/other/documentaries.html" class="learn-link"><i>&gt;</i> Learn more</a>
           </div>
         </div>
 
         <div class="mountain-row">
           <div
             class="mountain-img"
-            style="background-image: url('images/altitude.png')"
+            style="background-image: url('assets/images/logos/altitude.png')"
           ></div>
           <div class="mountain-text">
             <h2>
@@ -642,7 +206,7 @@
         <div class="mountain-row reverse">
           <div
             class="mountain-img"
-            style="background-image: url('images/courses.png')"
+            style="background-image: url('assets/images/logos/courses.png')"
           ></div>
           <div class="mountain-text">
             <h2>
@@ -684,11 +248,11 @@
       <h2>Explore</h2>
       <div>
         <div><a href="index.html">Home</a></div>
-        <div><a href="8000.html">8000 Meter Peaks</a></div>
-        <div><a href="kancherajunga.html">Kangchenjunga</a></div>
-        <div><a href="everest.html">Everest</a></div>
-        <div><a href="k2.html">K2</a></div>
-        <div><a href="lhotse.html">Lhotse</a></div>
+        <div><a href="pages/peaks/8000.html">8000 Meter Peaks</a></div>
+        <div><a href="pages/peaks/kancherajunga.html">Kangchenjunga</a></div>
+        <div><a href="pages/peaks/everest.html">Everest</a></div>
+        <div><a href="pages/peaks/k2.html">K2</a></div>
+        <div><a href="pages/peaks/lhotse.html">Lhotse</a></div>
       </div>
     </div>
     <div class="footer-col resources">
@@ -730,11 +294,11 @@
         const onScroll = () => {
           if (window.scrollY > 5) {
             nav.classList.add("scrolled");
-            if (logo) logo.src = "images/logoafter-removebg-preview.png";
+            if (logo) logo.src = "assets/images/logos/logoafter-removebg-preview.png";
             if (echoes) echoes.style.color = "#007bff";
           } else {
             nav.classList.remove("scrolled");
-            if (logo) logo.src = "images/logobefore-removebg-preview.png";
+            if (logo) logo.src = "assets/images/logos/logobefore-removebg-preview.png";
             if (echoes) echoes.style.color = "white";
           }
         };

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Vinson Massif — Altitude Echoes</title>
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../../assets/css/vinson.css" />
+  <link rel="stylesheet" href="../../assets/css/peaks-shared.css" />
+  </head>
+
+  <body>
+    <!-- NAV -->
+    <div class="nav">
+      <a class="logo" href="../../index.html">
+        <img id="logo-img" src="../../assets/images/logos/logobefore-removebg-preview.png" />
+        <div class="logo-text">
+          <h2>Altitude</h2>
+          <h2 id="echo-text">Echoes</h2>
+        </div>
+      </a>
+
+      <div class="subnav">
+        <a href="../../index.html">Home</a>
+        <a href="8000.html">8000ers</a>
+        <a href="../other/mountaneers.html">Mountaineers</a>
+        <a href="../other/documentaries.html">Documentaries</a>
+        <a href="../other/mmm.html">Altitude Sickness</a>
+        <a href="../other/mmm.html">Courses</a>
+      </div>
+    </div>
+
+    <main class="page-wrapper">
+      <!-- TITLE -->
+      <section class="card peak-header-card">
+        <div class="peak-banner-wrap">
+          <img src="../../assets/images/peaks/vinson_banner.jpg" alt="Vinson Massif" class="peak-banner-img" />
+        </div>
+
+        <div class="peak-content-wrap">
+          <div class="meta-row">
+            <span class="badge">Vinson</span>
+            <div>Peak Overview</div>
+          </div>
+
+          <h2>Vinson Massif — Peak Overview</h2>
+          <div class="rule"></div>
+
+          <ul class="peak-stats-list">
+            
+            <li><strong >Height:</strong> 4,892 m (16,050 ft)</li>
+            <li><strong >Range:</strong> Sentinel Range, Ellsworth Mountains</li>
+            <li><strong >Location:</strong> Antarctica</li>
+            <li><strong >Coordinates:</strong> 78.5250° S, 85.6170° W</li>
+            <li><strong >First Ascent:</strong> 1966</li>
+            <li><strong >First Climbers:</strong> Nicholas Clinch Expedition (USA)</li>
+
+          </ul>
+
+          <p class="peak-description-text">
+            Vinson Massif is the highest mountain in Antarctica and one of the coldest, 
+            most remote climbs on Earth. Towering above the endless ice of the Antarctic Plateau, 
+            it is a symbol of endurance and extreme expedition mountaineering.
+          </p>
+
+          <div class="peak-links-wrap">
+            <a href="https://en.wikipedia.org/wiki/Vinson_Massif" target="_blank" class="learn-link"><i>></i> Learn more</a>
+            <a href="cartezpyramid.html" class="learn-link"><i>></i> Next page</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- GEOGRAPHY -->
+      <article class="card article">
+        <div class="imgwrap">
+          <img src="../../assets/images/peaks/vinson_geo.jpg" />
+        </div>
+
+        <div class="content">
+          <div class="meta-row"><span class="badge">Geography</span> Antarctica</div>
+          <h2>Geography & Location</h2>
+          <div class="rule"></div>
+
+          <p>
+            Vinson rises from the remote Sentinel Range in Western Antarctica. 
+            The mountain is surrounded by massive glaciers, endless ice sheets, and frozen ridges, 
+            shaped by powerful katabatic winds and subzero temperatures year-round.
+          </p>
+        </div>
+      </article>
+
+      <!-- HISTORY -->
+      <article class="card article reverse">
+        <div class="imgwrap">
+          <img src="../../assets/images/peaks/vinson_history.jpg" />
+        </div>
+
+        <div class="content">
+          <div class="meta-row"><span class="badge">History</span> First Ascent: 1966</div>
+          <h2>Climbing History & Expeditions</h2>
+          <div class="rule"></div>
+
+          <p>
+            The first ascent was completed in 1966 by an American expedition led by Nicholas Clinch. 
+            Due to Antarctica’s isolation, expeditions require major logistics and support flights 
+            from Chile, making Vinson one of the most unique climbs in the world.
+          </p>
+        </div>
+      </article>
+
+      <!-- DANGERS -->
+      <article class="card article">
+        <div class="imgwrap">
+          <img src="../../assets/images/peaks/vinson_dangers.jpg" />
+        </div>
+
+        <div class="content">
+          <div class="meta-row"><span class="badge">Hazards</span> Extreme Cold • Isolation</div>
+          <h2>Challenges & Dangers</h2>
+          <div class="rule"></div>
+
+          <p>
+            Temperatures can drop below -40°C, with harsh winds and whiteout conditions being common. 
+            Rescue is extremely difficult due to Antarctica’s isolation. Frostbite, crevasses, 
+            and logistical delays are major risks.
+          </p>
+        </div>
+      </article>
+
+      <!-- CULTURE -->
+      <article class="card article reverse">
+        <div class="imgwrap">
+          <img src="../../assets/images/logos/vinson_culture.jpg" />
+        </div>
+
+        <div class="content">
+          <div class="meta-row"><span class="badge">Culture</span> Antarctic Treaty</div>
+          <h2>Cultural Significance & Conservation</h2>
+          <div class="rule"></div>
+
+          <p>
+            Antarctica has no permanent population, but Vinson Massif lies within a globally protected 
+            wilderness governed by the Antarctic Treaty System. Strict conservation measures preserve 
+            its pristine environment, icy landscapes, and scientific value.
+          </p>
+        </div>
+      </article>
+
+      <footer class="second-footer">
+        <p>© 2025 Altitude Echoes — Created by <strong>Manoj Inturi</strong></p>
+        <p><a href="mailto:manoj.inturi.s.142@kalvium.community">manoj.inturi.s.142@kalvium.community</a></p>
+      </footer>
+    </main>
+
+    <!-- NAV LOGIC -->
+    <script>
+      const nav = document.querySelector(".nav");
+      const logo = document.getElementById("logo-img");
+      const echo = document.getElementById("echo-text");
+
+      function onScroll() {
+        if (window.scrollY > 8) {
+          nav.classList.add("scrolled");
+          logo.src = "../../assets/images/logos/logoafter-removebg-preview.png";
+          echo.style.color = "#007bff";
+        } else {
+          nav.classList.remove("scrolled");
+          logo.src = "../../assets/images/logos/logobefore-removebg-preview.png";
+          echo.style.color = "white";
+        }
+      }
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      document.addEventListener("DOMContentLoaded", onScroll);
+    </script>
+  </body>
+</html>
