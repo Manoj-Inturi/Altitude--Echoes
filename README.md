@@ -641,6 +641,7 @@ git push origin feature/your-feature-name
 
 ## 📞 Get in Touch
 
+- **Email:** manoj_inturi@srmap.edu.in
 - **GitHub:** https://github.com/Manoj-Inturi/Altitude--Echoes
 - **Issues:** Report bugs and request features
 - **Discussions:** Join the community conversation
